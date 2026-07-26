@@ -1,1 +1,1 @@
-Run official Binance USD-M pump-consolidation backtest on 2026-07-26.
+Run official Binance USD-M 5-minute pilot backtest on 2026-07-26, revision 2.
