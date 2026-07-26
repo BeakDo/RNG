@@ -6,17 +6,21 @@ on:
     paths:
       - crypto_backtest.py
       - .github/workflows/crypto-backtest.yml
+  pull_request:
+    branches: [main]
+    paths:
+      - crypto_backtest.py
+      - backtest-trigger.txt
   workflow_dispatch:
 
 permissions:
-  contents: write
+  contents: read
 
 env:
   PYTHONUNBUFFERED: "1"
 
 jobs:
   backtest:
-    if: github.actor != 'github-actions[bot]'
     runs-on: ubuntu-latest
     timeout-minutes: 90
     steps:
@@ -35,10 +39,3 @@ jobs:
           name: crypto-backtest-results
           path: results/
           retention-days: 7
-      - name: Commit result files
-        run: |
-          git config user.name "github-actions[bot]"
-          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add results
-          git commit -m "Add crypto backtest results [skip ci]" || exit 0
-          git push
