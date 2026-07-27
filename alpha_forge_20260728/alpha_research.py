@@ -303,56 +303,29 @@ def select_weights(score: pd.DataFrame, tradable: pd.DataFrame, inv_vol: pd.Data
                    n_long: int, n_short: int, long_on: pd.Series | bool = True,
                    short_on: pd.Series | bool = True, rebalance: int = 1,
                    long_only: bool = False) -> pd.DataFrame:
-    # NumPy implementation: same next-bar portfolio semantics without per-cell
-    # pandas assignment. This keeps broad strategy searches computationally viable.
-    score_np = score.to_numpy(dtype=float, copy=True)
-    trad_np = tradable.to_numpy(dtype=bool, copy=False)
-    inv_np = inv_vol.to_numpy(dtype=float, copy=False)
-    rows, cols = score_np.shape
-    out = np.zeros((rows, cols), dtype=float)
-
-    if isinstance(long_on, pd.Series):
-        long_flags = long_on.reindex(score.index).fillna(False).to_numpy(dtype=bool)
-    else:
-        long_flags = np.full(rows, bool(long_on), dtype=bool)
-    if isinstance(short_on, pd.Series):
-        short_flags = short_on.reindex(score.index).fillna(False).to_numpy(dtype=bool)
-    else:
-        short_flags = np.full(rows, bool(short_on), dtype=bool)
-
-    rebalance = max(1, int(rebalance))
-    for i in range(0, rows, rebalance):
-        valid = trad_np[i] & np.isfinite(score_np[i]) & np.isfinite(inv_np[i]) & (inv_np[i] > 0)
-        ids = np.flatnonzero(valid)
-        if ids.size == 0:
+    score = score.where(tradable)
+    weights = pd.DataFrame(np.nan, index=score.index, columns=score.columns)
+    for i in range(0, len(score), rebalance):
+        # An explicit zero row at every rebalance allows the strategy to exit.
+        weights.iloc[i] = 0.0
+        row = score.iloc[i].dropna()
+        if row.empty:
             continue
-        lo = long_flags[i]
-        so = short_flags[i] and not long_only
-        vals = score_np[i, ids]
-
+        lo = bool(long_on.iloc[i]) if isinstance(long_on, pd.Series) else bool(long_on)
+        so = bool(short_on.iloc[i]) if isinstance(short_on, pd.Series) else bool(short_on)
         if lo and n_long > 0:
-            k = min(int(n_long), ids.size)
-            chosen = ids[np.argpartition(vals, ids.size - k)[-k:]]
-            raw = np.minimum(inv_np[i, chosen], 20.0)
-            total = raw.sum()
-            if total > 0:
-                factor = 0.5 if so else 1.0
-                out[i, chosen] = factor * raw / total
-
-        if so and n_short > 0:
-            k = min(int(n_short), ids.size)
-            chosen = ids[np.argpartition(vals, k - 1)[:k]]
-            raw = np.minimum(inv_np[i, chosen], 20.0)
-            total = raw.sum()
-            if total > 0:
-                factor = 0.5 if lo else 1.0
-                out[i, chosen] = -factor * raw / total
-
-        if rebalance > 1:
-            out[i:min(rows, i + rebalance)] = out[i]
-
-    out[~trad_np] = 0.0
-    return pd.DataFrame(out, index=score.index, columns=score.columns)
+            names = row.nlargest(min(n_long, len(row))).index
+            raw = inv_vol.iloc[i][names].replace([np.inf, -np.inf], np.nan).dropna().clip(upper=20)
+            if len(raw):
+                weights.loc[score.index[i], raw.index] = 0.5 * raw / raw.sum() if (so and not long_only) else raw / raw.sum()
+        if so and not long_only and n_short > 0:
+            names = row.nsmallest(min(n_short, len(row))).index
+            raw = inv_vol.iloc[i][names].replace([np.inf, -np.inf], np.nan).dropna().clip(upper=20)
+            if len(raw):
+                weights.loc[score.index[i], raw.index] = -0.5 * raw / raw.sum() if lo else -raw / raw.sum()
+    # Hold weights until next rebalance, but zero symbols that become unavailable.
+    weights = weights.ffill(limit=max(0, rebalance-1)).fillna(0.0)
+    return weights.where(tradable, 0.0)
 
 
 def event_weights(long_event: pd.DataFrame, short_event: pd.DataFrame, strength: pd.DataFrame,

@@ -1,60 +1,97 @@
 [
   {
-    "robust_score": 1.3166346979501096,
-    "neighbor_pass_rate": 0.8333333333333334,
+    "robust_score": 0.16658412374103704,
+    "neighbor_pass_rate": 1.0,
     "base_candidate": {
-      "score": 0.061376951859131716,
-      "median_cagr": 0.19401548622362286,
-      "worst_cagr": -0.1038395911446296,
-      "worst_mdd": 0.2787549959204899,
-      "median_sharpe": 0.7329840442511057,
+      "score": -1.0196848989172616,
+      "median_cagr": 0.1337980354574988,
+      "worst_cagr": -0.20473837624699587,
+      "worst_mdd": 0.34009962723085707,
+      "median_sharpe": 0.48666611142259975,
       "folds": [
         {
-          "cagr": -0.1038395911446296,
-          "mdd": 0.2787549959204899,
-          "sharpe": -0.09859743710788137,
-          "total_return": -0.10377233926333684,
-          "annual_turnover": 99.05527898453192,
-          "max_gross_leverage": 4.0,
+          "cagr": 1.4534402992693316,
+          "mdd": 0.2800786063185262,
+          "sharpe": 1.7659011605515236,
+          "total_return": 1.451933615492638,
+          "annual_turnover": 273.1825084297922,
+          "max_gross_leverage": 2.6666666666666665,
           "years": 0.999315537303217
         },
         {
-          "cagr": 0.09885771644388441,
-          "mdd": 0.2285481289098773,
-          "sharpe": 0.4591610191909329,
-          "total_return": 0.09878681480510831,
-          "annual_turnover": 103.1709503809835,
-          "max_gross_leverage": 2.6000000000000005,
+          "cagr": 0.2204079077417871,
+          "mdd": 0.3050518747288238,
+          "sharpe": 0.6676389757441735,
+          "total_return": 0.2202415350063085,
+          "annual_turnover": 210.11184330250504,
+          "max_gross_leverage": 1.7333333333333334,
           "years": 0.999315537303217
         },
         {
-          "cagr": 0.5634141916471209,
-          "mdd": 0.08520091138994479,
-          "sharpe": 1.4879112101840242,
-          "total_return": 0.5629360676134034,
-          "annual_turnover": 97.06806138625905,
-          "max_gross_leverage": 3.980999327184087,
+          "cagr": 0.04718816317321051,
+          "mdd": 0.31065925416266926,
+          "sharpe": 0.305693247101026,
+          "total_return": 0.04715511481455925,
+          "annual_turnover": 153.73627603942037,
+          "max_gross_leverage": 1.8536328395208201,
           "years": 0.999315537303217
         },
         {
-          "cagr": 0.2891732560033613,
-          "mdd": 0.15858239514490702,
-          "sharpe": 1.0068070693112785,
-          "total_return": 0.2898458163049491,
-          "annual_turnover": 35.20016633912688,
-          "max_gross_leverage": 3.9387085714437244,
+          "cagr": -0.20473837624699587,
+          "mdd": 0.34009962723085707,
+          "sharpe": -0.5981290377780094,
+          "total_return": -0.2051123782520391,
+          "annual_turnover": 166.83373962366653,
+          "max_gross_leverage": 2.666666666666667,
           "years": 1.002053388090349
         }
       ],
       "config": {
-        "family": "compression_breakout",
+        "family": "ensemble",
         "params": {
-          "breakout": 84,
-          "comp_q": 0.35,
-          "vol_z": 0.5,
-          "flow": 0.1,
-          "hold": 12,
-          "n": 2
+          "members": [
+            {
+              "family": "residual_momentum",
+              "params": {
+                "h": 42,
+                "n": 4,
+                "reb": 3,
+                "flow_w": 0.0
+              },
+              "target_vol": 0.6,
+              "leverage_cap": 4.0,
+              "one_way_cost": 0.0008,
+              "adverse_funding": 0.0
+            },
+            {
+              "family": "cross_momentum",
+              "params": {
+                "h": 18,
+                "n": 4,
+                "reb": 3,
+                "flow_w": 0.0,
+                "regime": true,
+                "skip": 6
+              },
+              "target_vol": 0.6,
+              "leverage_cap": 4.0,
+              "one_way_cost": 0.0008,
+              "adverse_funding": 0.0
+            },
+            {
+              "family": "funding_dislocation",
+              "params": {
+                "h": 18,
+                "n": 2,
+                "reb": 3,
+                "flow_w": 0.0
+              },
+              "target_vol": 0.6,
+              "leverage_cap": 4.0,
+              "one_way_cost": 0.0008,
+              "adverse_funding": 0.0
+            }
+          ]
         },
         "target_vol": 0.6,
         "leverage_cap": 4.0,
@@ -63,60 +100,97 @@
       }
     },
     "refined": {
-      "score": 0.3166346979501096,
-      "feasible": true,
-      "median_cagr": 0.34618563045157213,
-      "worst_cagr": 0.0055359002302461935,
-      "worst_mdd": 0.24732461865284583,
+      "score": -0.8043880660904161,
+      "feasible": false,
+      "median_cagr": 0.09600143265942607,
+      "worst_cagr": -0.20069856306313127,
+      "worst_mdd": 0.29862847627106837,
       "folds": [
         {
-          "cagr": 0.0055359002302461935,
-          "mdd": 0.24732461865284583,
-          "sharpe": 0.23285075652026113,
-          "total_return": 0.005532100651437055,
-          "annual_turnover": 141.34967495289857,
-          "max_gross_leverage": 2.0,
+          "cagr": 1.448075257137953,
+          "mdd": 0.22342413377657466,
+          "sharpe": 1.876895942951633,
+          "total_return": 1.446575533994006,
+          "annual_turnover": 253.40806271946113,
+          "max_gross_leverage": 1.3333333333333333,
           "years": 0.999315537303217
         },
         {
-          "cagr": 0.30348103993253184,
-          "mdd": 0.22215522199082904,
-          "sharpe": 0.8452396392135966,
-          "total_return": 0.3032445983126173,
-          "annual_turnover": 99.08837921270143,
-          "max_gross_leverage": 2.0,
+          "cagr": 0.12334265521526677,
+          "mdd": 0.2702132414097811,
+          "sharpe": 0.49013661102394956,
+          "total_return": 0.12325323058547721,
+          "annual_turnover": 183.69321737982003,
+          "max_gross_leverage": 1.3333333333333335,
           "years": 0.999315537303217
         },
         {
-          "cagr": 0.4036957035742801,
-          "mdd": 0.13614521111574973,
-          "sharpe": 1.1595925678094605,
-          "total_return": 0.40336993357269924,
-          "annual_turnover": 95.83721386280155,
-          "max_gross_leverage": 2.0,
+          "cagr": 0.06866021010358536,
+          "mdd": 0.2855450043229356,
+          "sharpe": 0.40743763104377734,
+          "total_return": 0.06861163820624694,
+          "annual_turnover": 108.8842762423342,
+          "max_gross_leverage": 1.3333333333333333,
           "years": 0.999315537303217
         },
         {
-          "cagr": 0.38889022097061243,
-          "mdd": 0.1780989938563805,
-          "sharpe": 1.161827605846306,
-          "total_return": 0.3898274105736723,
-          "annual_turnover": 23.751229508196722,
-          "max_gross_leverage": 2.0,
+          "cagr": -0.20069856306313127,
+          "mdd": 0.29862847627106837,
+          "sharpe": -0.720928375625494,
+          "total_return": -0.20106615247353954,
+          "annual_turnover": 133.8243356743825,
+          "max_gross_leverage": 1.3333333333333335,
           "years": 1.002053388090349
         }
       ],
       "config": {
-        "family": "compression_breakout",
+        "family": "ensemble",
         "params": {
-          "breakout": 84,
-          "comp_q": 0.35,
-          "vol_z": 0.5,
-          "flow": 0.1,
-          "hold": 12,
-          "n": 2
+          "members": [
+            {
+              "family": "residual_momentum",
+              "params": {
+                "h": 42,
+                "n": 4,
+                "reb": 3,
+                "flow_w": 0.0
+              },
+              "target_vol": 0.6,
+              "leverage_cap": 4.0,
+              "one_way_cost": 0.0008,
+              "adverse_funding": 0.0
+            },
+            {
+              "family": "cross_momentum",
+              "params": {
+                "h": 18,
+                "n": 4,
+                "reb": 3,
+                "flow_w": 0.0,
+                "regime": true,
+                "skip": 6
+              },
+              "target_vol": 0.6,
+              "leverage_cap": 4.0,
+              "one_way_cost": 0.0008,
+              "adverse_funding": 0.0
+            },
+            {
+              "family": "funding_dislocation",
+              "params": {
+                "h": 18,
+                "n": 2,
+                "reb": 3,
+                "flow_w": 0.0
+              },
+              "target_vol": 0.6,
+              "leverage_cap": 4.0,
+              "one_way_cost": 0.0008,
+              "adverse_funding": 0.0
+            }
+          ]
         },
-        "target_vol": 1.5,
+        "target_vol": 0.45,
         "leverage_cap": 2.0,
         "one_way_cost": 0.0008,
         "adverse_funding": 0.0
@@ -185,64 +259,101 @@
     "data_end_exclusive": "2026-07-01 00:00:00+00:00",
     "holdout_used_in_selection": false,
     "tested_config_count": 232,
-    "created_at_utc": "2026-07-27T20:56:54.674304+00:00"
+    "created_at_utc": "2026-07-27T21:21:46.553153+00:00"
   },
   {
-    "robust_score": 1.3126158203490454,
-    "neighbor_pass_rate": 0.8333333333333334,
+    "robust_score": 0.16658412374103704,
+    "neighbor_pass_rate": 1.0,
     "base_candidate": {
-      "score": 0.1450514114037061,
-      "median_cagr": 0.1355516621655255,
-      "worst_cagr": 0.06810289195255459,
-      "worst_mdd": 0.269931628609444,
-      "median_sharpe": 0.7301580482391448,
+      "score": -1.0196848989172616,
+      "median_cagr": 0.1337980354574988,
+      "worst_cagr": -0.20473837624699587,
+      "worst_mdd": 0.34009962723085707,
+      "median_sharpe": 0.48666611142259975,
       "folds": [
         {
-          "cagr": 0.06810289195255459,
-          "mdd": 0.269931628609444,
-          "sharpe": 0.3676026607054472,
-          "total_return": 0.0680547267327325,
-          "annual_turnover": 102.28548705522759,
-          "max_gross_leverage": 2.5,
+          "cagr": 1.4534402992693316,
+          "mdd": 0.2800786063185262,
+          "sharpe": 1.7659011605515236,
+          "total_return": 1.451933615492638,
+          "annual_turnover": 273.1825084297922,
+          "max_gross_leverage": 2.6666666666666665,
           "years": 0.999315537303217
         },
         {
-          "cagr": 0.07864074422958489,
-          "mdd": 0.23760412923205687,
-          "sharpe": 0.4299813885089494,
-          "total_return": 0.07858485593444553,
-          "annual_turnover": 81.66102185880601,
-          "max_gross_leverage": 2.5,
+          "cagr": 0.2204079077417871,
+          "mdd": 0.3050518747288238,
+          "sharpe": 0.6676389757441735,
+          "total_return": 0.2202415350063085,
+          "annual_turnover": 210.11184330250504,
+          "max_gross_leverage": 1.7333333333333334,
           "years": 0.999315537303217
         },
         {
-          "cagr": 0.43806349265018363,
-          "mdd": 0.10215607225737267,
-          "sharpe": 1.2692442263416173,
-          "total_return": 0.4377059431678132,
-          "annual_turnover": 84.77008522686025,
-          "max_gross_leverage": 2.5,
+          "cagr": 0.04718816317321051,
+          "mdd": 0.31065925416266926,
+          "sharpe": 0.305693247101026,
+          "total_return": 0.04715511481455925,
+          "annual_turnover": 153.73627603942037,
+          "max_gross_leverage": 1.8536328395208201,
           "years": 0.999315537303217
         },
         {
-          "cagr": 0.1924625801014661,
-          "mdd": 0.0747359839998718,
-          "sharpe": 1.0303347079693401,
-          "total_return": 0.19289365992276375,
-          "annual_turnover": 19.960828380897695,
-          "max_gross_leverage": 2.5,
+          "cagr": -0.20473837624699587,
+          "mdd": 0.34009962723085707,
+          "sharpe": -0.5981290377780094,
+          "total_return": -0.2051123782520391,
+          "annual_turnover": 166.83373962366653,
+          "max_gross_leverage": 2.666666666666667,
           "years": 1.002053388090349
         }
       ],
       "config": {
-        "family": "compression_breakout",
+        "family": "ensemble",
         "params": {
-          "breakout": 84,
-          "comp_q": 0.35,
-          "vol_z": 1.0,
-          "flow": 0.1,
-          "hold": 12,
-          "n": 1
+          "members": [
+            {
+              "family": "residual_momentum",
+              "params": {
+                "h": 42,
+                "n": 4,
+                "reb": 3,
+                "flow_w": 0.0
+              },
+              "target_vol": 0.6,
+              "leverage_cap": 4.0,
+              "one_way_cost": 0.0008,
+              "adverse_funding": 0.0
+            },
+            {
+              "family": "cross_momentum",
+              "params": {
+                "h": 18,
+                "n": 4,
+                "reb": 3,
+                "flow_w": 0.0,
+                "regime": true,
+                "skip": 6
+              },
+              "target_vol": 0.6,
+              "leverage_cap": 4.0,
+              "one_way_cost": 0.0008,
+              "adverse_funding": 0.0
+            },
+            {
+              "family": "funding_dislocation",
+              "params": {
+                "h": 18,
+                "n": 2,
+                "reb": 3,
+                "flow_w": 0.0
+              },
+              "target_vol": 0.6,
+              "leverage_cap": 4.0,
+              "one_way_cost": 0.0008,
+              "adverse_funding": 0.0
+            }
+          ]
         },
         "target_vol": 0.6,
         "leverage_cap": 4.0,
@@ -251,60 +362,97 @@
       }
     },
     "refined": {
-      "score": 0.3126158203490455,
-      "feasible": true,
-      "median_cagr": 0.27058408760860386,
-      "worst_cagr": 0.19116077694897382,
-      "worst_mdd": 0.2564582967327861,
+      "score": -0.8043880660904161,
+      "feasible": false,
+      "median_cagr": 0.09600143265942607,
+      "worst_cagr": -0.20069856306313127,
+      "worst_mdd": 0.29862847627106837,
       "folds": [
         {
-          "cagr": 0.3506227648569953,
-          "mdd": 0.2413111966331234,
-          "sharpe": 0.9105916710339255,
-          "total_return": 0.3503449351181931,
-          "annual_turnover": 116.21950973530667,
-          "max_gross_leverage": 2.0,
+          "cagr": 1.448075257137953,
+          "mdd": 0.22342413377657466,
+          "sharpe": 1.876895942951633,
+          "total_return": 1.446575533994006,
+          "annual_turnover": 253.40806271946113,
+          "max_gross_leverage": 1.3333333333333333,
           "years": 0.999315537303217
         },
         {
-          "cagr": 0.2987088797734272,
-          "mdd": 0.2564582967327861,
-          "sharpe": 0.9899955080264108,
-          "total_return": 0.2984765635790956,
-          "annual_turnover": 72.30407149344755,
-          "max_gross_leverage": 2.0,
+          "cagr": 0.12334265521526677,
+          "mdd": 0.2702132414097811,
+          "sharpe": 0.49013661102394956,
+          "total_return": 0.12325323058547721,
+          "annual_turnover": 183.69321737982003,
+          "max_gross_leverage": 1.3333333333333335,
           "years": 0.999315537303217
         },
         {
-          "cagr": 0.19116077694897382,
-          "mdd": 0.1633925135823826,
-          "sharpe": 0.7174741076862173,
-          "total_return": 0.1910181655692773,
-          "annual_turnover": 81.27183820931887,
-          "max_gross_leverage": 2.0,
+          "cagr": 0.06866021010358536,
+          "mdd": 0.2855450043229356,
+          "sharpe": 0.40743763104377734,
+          "total_return": 0.06861163820624694,
+          "annual_turnover": 108.8842762423342,
+          "max_gross_leverage": 1.3333333333333333,
           "years": 0.999315537303217
         },
         {
-          "cagr": 0.24245929544378053,
-          "mdd": 0.14265801410811352,
-          "sharpe": 0.9043992428175349,
-          "total_return": 0.2430132769508968,
-          "annual_turnover": 13.17295081967213,
-          "max_gross_leverage": 2.0,
+          "cagr": -0.20069856306313127,
+          "mdd": 0.29862847627106837,
+          "sharpe": -0.720928375625494,
+          "total_return": -0.20106615247353954,
+          "annual_turnover": 133.8243356743825,
+          "max_gross_leverage": 1.3333333333333335,
           "years": 1.002053388090349
         }
       ],
       "config": {
-        "family": "compression_breakout",
+        "family": "ensemble",
         "params": {
-          "breakout": 84,
-          "comp_q": 0.35,
-          "vol_z": 1.0,
-          "flow": 0.1,
-          "hold": 12,
-          "n": 1
+          "members": [
+            {
+              "family": "residual_momentum",
+              "params": {
+                "h": 42,
+                "n": 4,
+                "reb": 3,
+                "flow_w": 0.0
+              },
+              "target_vol": 0.6,
+              "leverage_cap": 4.0,
+              "one_way_cost": 0.0008,
+              "adverse_funding": 0.0
+            },
+            {
+              "family": "cross_momentum",
+              "params": {
+                "h": 18,
+                "n": 4,
+                "reb": 3,
+                "flow_w": 0.0,
+                "regime": true,
+                "skip": 6
+              },
+              "target_vol": 0.6,
+              "leverage_cap": 4.0,
+              "one_way_cost": 0.0008,
+              "adverse_funding": 0.0
+            },
+            {
+              "family": "funding_dislocation",
+              "params": {
+                "h": 18,
+                "n": 2,
+                "reb": 3,
+                "flow_w": 0.0
+              },
+              "target_vol": 0.6,
+              "leverage_cap": 4.0,
+              "one_way_cost": 0.0008,
+              "adverse_funding": 0.0
+            }
+          ]
         },
-        "target_vol": 2.0,
+        "target_vol": 0.45,
         "leverage_cap": 2.0,
         "one_way_cost": 0.0008,
         "adverse_funding": 0.0
@@ -312,61 +460,98 @@
     }
   },
   {
-    "robust_score": 1.3096499917743851,
-    "neighbor_pass_rate": 0.9166666666666666,
+    "robust_score": 0.16658412374103704,
+    "neighbor_pass_rate": 1.0,
     "base_candidate": {
-      "score": 0.1004074879604508,
-      "median_cagr": 0.23938034253979612,
-      "worst_cagr": -0.013465967551424596,
-      "worst_mdd": 0.2906557277968821,
-      "median_sharpe": 0.7868840527245717,
+      "score": -1.0196848989172616,
+      "median_cagr": 0.1337980354574988,
+      "worst_cagr": -0.20473837624699587,
+      "worst_mdd": 0.34009962723085707,
+      "median_sharpe": 0.48666611142259975,
       "folds": [
         {
-          "cagr": 0.2067485217638818,
-          "mdd": 0.2906557277968821,
-          "sharpe": 0.6579265636723185,
-          "total_return": 0.2065933067423622,
-          "annual_turnover": 106.16943121080755,
-          "max_gross_leverage": 4.0,
+          "cagr": 1.4534402992693316,
+          "mdd": 0.2800786063185262,
+          "sharpe": 1.7659011605515236,
+          "total_return": 1.451933615492638,
+          "annual_turnover": 273.1825084297922,
+          "max_gross_leverage": 2.6666666666666665,
           "years": 0.999315537303217
         },
         {
-          "cagr": 0.27201216331571043,
-          "mdd": 0.18692547327258247,
-          "sharpe": 0.9158415417768249,
-          "total_return": 0.2718027033825121,
-          "annual_turnover": 106.77733556290366,
-          "max_gross_leverage": 4.0,
+          "cagr": 0.2204079077417871,
+          "mdd": 0.3050518747288238,
+          "sharpe": 0.6676389757441735,
+          "total_return": 0.2202415350063085,
+          "annual_turnover": 210.11184330250504,
+          "max_gross_leverage": 1.7333333333333334,
           "years": 0.999315537303217
         },
         {
-          "cagr": 0.5698051421831625,
-          "mdd": 0.11513802107859394,
-          "sharpe": 1.4461102796826795,
-          "total_return": 0.5693206817168004,
-          "annual_turnover": 122.38591480145375,
-          "max_gross_leverage": 4.0,
+          "cagr": 0.04718816317321051,
+          "mdd": 0.31065925416266926,
+          "sharpe": 0.305693247101026,
+          "total_return": 0.04715511481455925,
+          "annual_turnover": 153.73627603942037,
+          "max_gross_leverage": 1.8536328395208201,
           "years": 0.999315537303217
         },
         {
-          "cagr": -0.013465967551424596,
-          "mdd": 0.19654929000937327,
-          "sharpe": 0.056065041462098425,
-          "total_return": -0.013493431012432056,
-          "annual_turnover": 28.932330300784937,
-          "max_gross_leverage": 4.0,
+          "cagr": -0.20473837624699587,
+          "mdd": 0.34009962723085707,
+          "sharpe": -0.5981290377780094,
+          "total_return": -0.2051123782520391,
+          "annual_turnover": 166.83373962366653,
+          "max_gross_leverage": 2.666666666666667,
           "years": 1.002053388090349
         }
       ],
       "config": {
-        "family": "compression_breakout",
+        "family": "ensemble",
         "params": {
-          "breakout": 84,
-          "comp_q": 0.35,
-          "vol_z": 1.0,
-          "flow": 0.1,
-          "hold": 24,
-          "n": 2
+          "members": [
+            {
+              "family": "residual_momentum",
+              "params": {
+                "h": 42,
+                "n": 4,
+                "reb": 3,
+                "flow_w": 0.0
+              },
+              "target_vol": 0.6,
+              "leverage_cap": 4.0,
+              "one_way_cost": 0.0008,
+              "adverse_funding": 0.0
+            },
+            {
+              "family": "cross_momentum",
+              "params": {
+                "h": 18,
+                "n": 4,
+                "reb": 3,
+                "flow_w": 0.0,
+                "regime": true,
+                "skip": 6
+              },
+              "target_vol": 0.6,
+              "leverage_cap": 4.0,
+              "one_way_cost": 0.0008,
+              "adverse_funding": 0.0
+            },
+            {
+              "family": "funding_dislocation",
+              "params": {
+                "h": 18,
+                "n": 2,
+                "reb": 3,
+                "flow_w": 0.0
+              },
+              "target_vol": 0.6,
+              "leverage_cap": 4.0,
+              "one_way_cost": 0.0008,
+              "adverse_funding": 0.0
+            }
+          ]
         },
         "target_vol": 0.6,
         "leverage_cap": 4.0,
@@ -375,122 +560,196 @@
       }
     },
     "refined": {
-      "score": 0.20964999177438537,
-      "feasible": true,
-      "median_cagr": 0.26210963750838234,
-      "worst_cagr": -0.0440344623164185,
-      "worst_mdd": 0.24925302276982808,
+      "score": -0.8043880660904161,
+      "feasible": false,
+      "median_cagr": 0.09600143265942607,
+      "worst_cagr": -0.20069856306313127,
+      "worst_mdd": 0.29862847627106837,
       "folds": [
         {
-          "cagr": 0.2485454557257072,
-          "mdd": 0.24925302276982808,
-          "sharpe": 0.770740333195779,
-          "total_return": 0.24835577049937085,
-          "annual_turnover": 120.60545212147521,
-          "max_gross_leverage": 3.0,
+          "cagr": 1.448075257137953,
+          "mdd": 0.22342413377657466,
+          "sharpe": 1.876895942951633,
+          "total_return": 1.446575533994006,
+          "annual_turnover": 253.40806271946113,
+          "max_gross_leverage": 1.3333333333333333,
           "years": 0.999315537303217
         },
         {
-          "cagr": 0.2756738192910575,
-          "mdd": 0.17111785739110386,
-          "sharpe": 1.002157061887183,
-          "total_return": 0.2754612469446047,
-          "annual_turnover": 90.09798191062853,
-          "max_gross_leverage": 3.0,
+          "cagr": 0.12334265521526677,
+          "mdd": 0.2702132414097811,
+          "sharpe": 0.49013661102394956,
+          "total_return": 0.12325323058547721,
+          "annual_turnover": 183.69321737982003,
+          "max_gross_leverage": 1.3333333333333335,
           "years": 0.999315537303217
         },
         {
-          "cagr": 0.5240480556522658,
-          "mdd": 0.09404187414763765,
-          "sharpe": 1.4382710018632068,
-          "total_return": 0.5236085652248283,
-          "annual_turnover": 105.23419422669261,
-          "max_gross_leverage": 3.0,
+          "cagr": 0.06866021010358536,
+          "mdd": 0.2855450043229356,
+          "sharpe": 0.40743763104377734,
+          "total_return": 0.06861163820624694,
+          "annual_turnover": 108.8842762423342,
+          "max_gross_leverage": 1.3333333333333333,
           "years": 0.999315537303217
         },
         {
-          "cagr": -0.0440344623164185,
-          "mdd": 0.1919971135394648,
-          "sharpe": -0.1259894891792678,
-          "total_return": -0.04412285739324562,
-          "annual_turnover": 26.002172366615046,
-          "max_gross_leverage": 3.0,
+          "cagr": -0.20069856306313127,
+          "mdd": 0.29862847627106837,
+          "sharpe": -0.720928375625494,
+          "total_return": -0.20106615247353954,
+          "annual_turnover": 133.8243356743825,
+          "max_gross_leverage": 1.3333333333333335,
           "years": 1.002053388090349
         }
       ],
       "config": {
-        "family": "compression_breakout",
+        "family": "ensemble",
         "params": {
-          "breakout": 84,
-          "comp_q": 0.35,
-          "vol_z": 1.0,
-          "flow": 0.1,
-          "hold": 24,
-          "n": 2
+          "members": [
+            {
+              "family": "residual_momentum",
+              "params": {
+                "h": 42,
+                "n": 4,
+                "reb": 3,
+                "flow_w": 0.0
+              },
+              "target_vol": 0.6,
+              "leverage_cap": 4.0,
+              "one_way_cost": 0.0008,
+              "adverse_funding": 0.0
+            },
+            {
+              "family": "cross_momentum",
+              "params": {
+                "h": 18,
+                "n": 4,
+                "reb": 3,
+                "flow_w": 0.0,
+                "regime": true,
+                "skip": 6
+              },
+              "target_vol": 0.6,
+              "leverage_cap": 4.0,
+              "one_way_cost": 0.0008,
+              "adverse_funding": 0.0
+            },
+            {
+              "family": "funding_dislocation",
+              "params": {
+                "h": 18,
+                "n": 2,
+                "reb": 3,
+                "flow_w": 0.0
+              },
+              "target_vol": 0.6,
+              "leverage_cap": 4.0,
+              "one_way_cost": 0.0008,
+              "adverse_funding": 0.0
+            }
+          ]
         },
         "target_vol": 0.45,
-        "leverage_cap": 3.0,
+        "leverage_cap": 2.0,
         "one_way_cost": 0.0008,
         "adverse_funding": 0.0
       }
     }
   },
   {
-    "robust_score": 1.2658363796379168,
-    "neighbor_pass_rate": 0.8333333333333334,
+    "robust_score": 0.16658412374103704,
+    "neighbor_pass_rate": 1.0,
     "base_candidate": {
-      "score": 0.36267681206450636,
-      "median_cagr": 0.20167825573449716,
-      "worst_cagr": -0.048913062713355826,
-      "worst_mdd": 0.2667458689062715,
-      "median_sharpe": 0.8212644519327477,
+      "score": -1.0196848989172616,
+      "median_cagr": 0.1337980354574988,
+      "worst_cagr": -0.20473837624699587,
+      "worst_mdd": 0.34009962723085707,
+      "median_sharpe": 0.48666611142259975,
       "folds": [
         {
-          "cagr": 0.20411859651111275,
-          "mdd": 0.2667458689062715,
-          "sharpe": 0.7569868311543332,
-          "total_return": 0.20396551765003612,
-          "annual_turnover": 90.54590359144726,
-          "max_gross_leverage": 2.5,
+          "cagr": 1.4534402992693316,
+          "mdd": 0.2800786063185262,
+          "sharpe": 1.7659011605515236,
+          "total_return": 1.451933615492638,
+          "annual_turnover": 273.1825084297922,
+          "max_gross_leverage": 2.6666666666666665,
           "years": 0.999315537303217
         },
         {
-          "cagr": 0.19923791495788157,
-          "mdd": 0.1979688067969645,
-          "sharpe": 0.8855420727111621,
-          "total_return": 0.1990887900206051,
-          "annual_turnover": 68.2351238501452,
-          "max_gross_leverage": 2.5,
+          "cagr": 0.2204079077417871,
+          "mdd": 0.3050518747288238,
+          "sharpe": 0.6676389757441735,
+          "total_return": 0.2202415350063085,
+          "annual_turnover": 210.11184330250504,
+          "max_gross_leverage": 1.7333333333333334,
           "years": 0.999315537303217
         },
         {
-          "cagr": 0.4403640242170197,
-          "mdd": 0.0830708625054124,
-          "sharpe": 1.3487987645592383,
-          "total_return": 0.44000432725328653,
-          "annual_turnover": 52.74851671877621,
-          "max_gross_leverage": 2.5,
+          "cagr": 0.04718816317321051,
+          "mdd": 0.31065925416266926,
+          "sharpe": 0.305693247101026,
+          "total_return": 0.04715511481455925,
+          "annual_turnover": 153.73627603942037,
+          "max_gross_leverage": 1.8536328395208201,
           "years": 0.999315537303217
         },
         {
-          "cagr": -0.048913062713355826,
-          "mdd": 0.0747359839998718,
-          "sharpe": -0.528401806373651,
-          "total_return": -0.04901099775986972,
-          "annual_turnover": 9.979508196721312,
-          "max_gross_leverage": 2.5,
+          "cagr": -0.20473837624699587,
+          "mdd": 0.34009962723085707,
+          "sharpe": -0.5981290377780094,
+          "total_return": -0.2051123782520391,
+          "annual_turnover": 166.83373962366653,
+          "max_gross_leverage": 2.666666666666667,
           "years": 1.002053388090349
         }
       ],
       "config": {
-        "family": "compression_breakout",
+        "family": "ensemble",
         "params": {
-          "breakout": 84,
-          "comp_q": 0.2,
-          "vol_z": 1.0,
-          "flow": 0.1,
-          "hold": 12,
-          "n": 1
+          "members": [
+            {
+              "family": "residual_momentum",
+              "params": {
+                "h": 42,
+                "n": 4,
+                "reb": 3,
+                "flow_w": 0.0
+              },
+              "target_vol": 0.6,
+              "leverage_cap": 4.0,
+              "one_way_cost": 0.0008,
+              "adverse_funding": 0.0
+            },
+            {
+              "family": "cross_momentum",
+              "params": {
+                "h": 18,
+                "n": 4,
+                "reb": 3,
+                "flow_w": 0.0,
+                "regime": true,
+                "skip": 6
+              },
+              "target_vol": 0.6,
+              "leverage_cap": 4.0,
+              "one_way_cost": 0.0008,
+              "adverse_funding": 0.0
+            },
+            {
+              "family": "funding_dislocation",
+              "params": {
+                "h": 18,
+                "n": 2,
+                "reb": 3,
+                "flow_w": 0.0
+              },
+              "target_vol": 0.6,
+              "leverage_cap": 4.0,
+              "one_way_cost": 0.0008,
+              "adverse_funding": 0.0
+            }
+          ]
         },
         "target_vol": 0.6,
         "leverage_cap": 4.0,
@@ -499,58 +758,703 @@
       }
     },
     "refined": {
-      "score": 0.26583637963791695,
-      "feasible": true,
-      "median_cagr": 0.2840623297733579,
-      "worst_cagr": -0.019858052046730967,
-      "worst_mdd": 0.26184457130409755,
+      "score": -0.8043880660904161,
+      "feasible": false,
+      "median_cagr": 0.09600143265942607,
+      "worst_cagr": -0.20069856306313127,
+      "worst_mdd": 0.29862847627106837,
       "folds": [
         {
-          "cagr": 0.276538585780181,
-          "mdd": 0.26184457130409755,
-          "sharpe": 0.8325083129256843,
-          "total_return": 0.2763252773308891,
-          "annual_turnover": 81.331034220432,
+          "cagr": 1.448075257137953,
+          "mdd": 0.22342413377657466,
+          "sharpe": 1.876895942951633,
+          "total_return": 1.446575533994006,
+          "annual_turnover": 253.40806271946113,
+          "max_gross_leverage": 1.3333333333333333,
+          "years": 0.999315537303217
+        },
+        {
+          "cagr": 0.12334265521526677,
+          "mdd": 0.2702132414097811,
+          "sharpe": 0.49013661102394956,
+          "total_return": 0.12325323058547721,
+          "annual_turnover": 183.69321737982003,
+          "max_gross_leverage": 1.3333333333333335,
+          "years": 0.999315537303217
+        },
+        {
+          "cagr": 0.06866021010358536,
+          "mdd": 0.2855450043229356,
+          "sharpe": 0.40743763104377734,
+          "total_return": 0.06861163820624694,
+          "annual_turnover": 108.8842762423342,
+          "max_gross_leverage": 1.3333333333333333,
+          "years": 0.999315537303217
+        },
+        {
+          "cagr": -0.20069856306313127,
+          "mdd": 0.29862847627106837,
+          "sharpe": -0.720928375625494,
+          "total_return": -0.20106615247353954,
+          "annual_turnover": 133.8243356743825,
+          "max_gross_leverage": 1.3333333333333335,
+          "years": 1.002053388090349
+        }
+      ],
+      "config": {
+        "family": "ensemble",
+        "params": {
+          "members": [
+            {
+              "family": "residual_momentum",
+              "params": {
+                "h": 42,
+                "n": 4,
+                "reb": 3,
+                "flow_w": 0.0
+              },
+              "target_vol": 0.6,
+              "leverage_cap": 4.0,
+              "one_way_cost": 0.0008,
+              "adverse_funding": 0.0
+            },
+            {
+              "family": "cross_momentum",
+              "params": {
+                "h": 18,
+                "n": 4,
+                "reb": 3,
+                "flow_w": 0.0,
+                "regime": true,
+                "skip": 6
+              },
+              "target_vol": 0.6,
+              "leverage_cap": 4.0,
+              "one_way_cost": 0.0008,
+              "adverse_funding": 0.0
+            },
+            {
+              "family": "funding_dislocation",
+              "params": {
+                "h": 18,
+                "n": 2,
+                "reb": 3,
+                "flow_w": 0.0
+              },
+              "target_vol": 0.6,
+              "leverage_cap": 4.0,
+              "one_way_cost": 0.0008,
+              "adverse_funding": 0.0
+            }
+          ]
+        },
+        "target_vol": 0.45,
+        "leverage_cap": 2.0,
+        "one_way_cost": 0.0008,
+        "adverse_funding": 0.0
+      }
+    }
+  },
+  {
+    "robust_score": -1.908775916995,
+    "neighbor_pass_rate": 0.0,
+    "base_candidate": {
+      "score": -1.1664891469130307,
+      "median_cagr": 0.3330488305029239,
+      "worst_cagr": -0.3119024780965819,
+      "worst_mdd": 0.39305084812116375,
+      "median_sharpe": 0.844513065658431,
+      "folds": [
+        {
+          "cagr": 1.1275452923432598,
+          "mdd": 0.3077604063707401,
+          "sharpe": 1.389814022478359,
+          "total_return": 1.1264461715157443,
+          "annual_turnover": 223.88113305388183,
+          "max_gross_leverage": 3.961374634772322,
+          "years": 0.999315537303217
+        },
+        {
+          "cagr": 0.30747451719430186,
+          "mdd": 0.3384319705653154,
+          "sharpe": 0.7599944820264449,
+          "total_return": 0.30723461411811415,
+          "annual_turnover": 187.5162406089653,
+          "max_gross_leverage": 1.6597130256808807,
+          "years": 0.999315537303217
+        },
+        {
+          "cagr": 0.3586231438115459,
+          "mdd": 0.3556919451361097,
+          "sharpe": 0.9290316492904171,
+          "total_return": 0.358338177348962,
+          "annual_turnover": 180.05961412058127,
+          "max_gross_leverage": 2.6000000000000005,
+          "years": 0.999315537303217
+        },
+        {
+          "cagr": -0.3119024780965819,
+          "mdd": 0.39305084812116375,
+          "sharpe": -0.9625981158161732,
+          "total_return": -0.3124304640366774,
+          "annual_turnover": 136.7622529469797,
+          "max_gross_leverage": 4.0,
+          "years": 1.002053388090349
+        }
+      ],
+      "config": {
+        "family": "residual_momentum",
+        "params": {
+          "h": 126,
+          "n": 2,
+          "reb": 3,
+          "flow_w": 0.0
+        },
+        "target_vol": 0.6,
+        "leverage_cap": 4.0,
+        "one_way_cost": 0.0008,
+        "adverse_funding": 0.0
+      }
+    },
+    "refined": {
+      "score": -1.3416837739426188,
+      "feasible": false,
+      "median_cagr": 0.23553977059616427,
+      "worst_cagr": -0.2448856218543889,
+      "worst_mdd": 0.34088651788154767,
+      "folds": [
+        {
+          "cagr": 0.7286673639897969,
+          "mdd": 0.3063947085203249,
+          "sharpe": 1.161769234253762,
+          "total_return": 0.7280198552632311,
+          "annual_turnover": 196.79339495191303,
           "max_gross_leverage": 2.0,
           "years": 0.999315537303217
         },
         {
-          "cagr": 0.2915860737665348,
-          "mdd": 0.2617710485587331,
-          "sharpe": 1.0336505914728258,
-          "total_return": 0.29135989275760976,
-          "annual_turnover": 50.11333309041911,
-          "max_gross_leverage": 2.0,
+          "cagr": 0.2121137549307932,
+          "mdd": 0.31720653893463446,
+          "sharpe": 0.6372718353044025,
+          "total_return": 0.2119541698450409,
+          "annual_turnover": 147.93824742424147,
+          "max_gross_leverage": 1.4947276154154143,
           "years": 0.999315537303217
         },
         {
-          "cagr": 0.36200911504978706,
-          "mdd": 0.09893097044113763,
-          "sharpe": 1.1819043479193991,
-          "total_return": 0.36172111842369437,
-          "annual_turnover": 52.4461941839735,
-          "max_gross_leverage": 2.0,
+          "cagr": 0.2589657862615353,
+          "mdd": 0.33313953181029465,
+          "sharpe": 0.8749479123066226,
+          "total_return": 0.25876735702708875,
+          "annual_turnover": 104.39362199217092,
+          "max_gross_leverage": 1.722670542512622,
           "years": 0.999315537303217
         },
         {
-          "cagr": -0.019858052046730967,
-          "mdd": 0.06655963560934475,
-          "sharpe": -0.16688031290587396,
-          "total_return": -0.01989841992726782,
-          "annual_turnover": 7.983606557377049,
+          "cagr": -0.2448856218543889,
+          "mdd": 0.34088651788154767,
+          "sharpe": -0.687597632878434,
+          "total_return": -0.2453210221375115,
+          "annual_turnover": 115.08940016379985,
           "max_gross_leverage": 2.0,
           "years": 1.002053388090349
         }
       ],
       "config": {
-        "family": "compression_breakout",
+        "family": "residual_momentum",
         "params": {
-          "breakout": 84,
-          "comp_q": 0.2,
-          "vol_z": 1.0,
-          "flow": 0.1,
-          "hold": 12,
-          "n": 1
+          "h": 126,
+          "n": 2,
+          "reb": 3,
+          "flow_w": 0.0
+        },
+        "target_vol": 0.45,
+        "leverage_cap": 2.0,
+        "one_way_cost": 0.0008,
+        "adverse_funding": 0.0
+      }
+    }
+  },
+  {
+    "robust_score": -1.9152466692011758,
+    "neighbor_pass_rate": 0.0,
+    "base_candidate": {
+      "score": -1.5036962941805552,
+      "median_cagr": 0.21127622372894528,
+      "worst_cagr": -0.22559213544200685,
+      "worst_mdd": 0.40706041335388743,
+      "median_sharpe": 0.665744124255822,
+      "folds": [
+        {
+          "cagr": 0.566156009214086,
+          "mdd": 0.36251200048795285,
+          "sharpe": 1.010133612406024,
+          "total_return": 0.565675168935557,
+          "annual_turnover": 209.90634807062676,
+          "max_gross_leverage": 1.6864050737749026,
+          "years": 0.999315537303217
+        },
+        {
+          "cagr": 0.20367141916026954,
+          "mdd": 0.33574523515377697,
+          "sharpe": 0.6062983119464305,
+          "total_return": 0.20351870312908527,
+          "annual_turnover": 242.94716021699617,
+          "max_gross_leverage": 3.239366680138351,
+          "years": 0.999315537303217
+        },
+        {
+          "cagr": 0.21888102829762102,
+          "mdd": 0.40706041335388743,
+          "sharpe": 0.7251899365652134,
+          "total_return": 0.21871590801081187,
+          "annual_turnover": 200.03267646340515,
+          "max_gross_leverage": 1.7217517231118844,
+          "years": 0.999315537303217
+        },
+        {
+          "cagr": -0.22559213544200685,
+          "mdd": 0.38492293723533333,
+          "sharpe": -0.6966905496107519,
+          "total_return": -0.2259985636028664,
+          "annual_turnover": 176.74622005411965,
+          "max_gross_leverage": 4.0,
+          "years": 1.002053388090349
+        }
+      ],
+      "config": {
+        "family": "residual_momentum",
+        "params": {
+          "h": 18,
+          "n": 2,
+          "reb": 3,
+          "flow_w": 0.0
+        },
+        "target_vol": 0.6,
+        "leverage_cap": 4.0,
+        "one_way_cost": 0.0008,
+        "adverse_funding": 0.0
+      }
+    },
+    "refined": {
+      "score": -1.3258525780787591,
+      "feasible": false,
+      "median_cagr": 0.3055442118359085,
+      "worst_cagr": -0.10867834237782448,
+      "worst_mdd": 0.3436742613903021,
+      "folds": [
+        {
+          "cagr": 0.648775252453845,
+          "mdd": 0.3436742613903021,
+          "sharpe": 1.105342671904941,
+          "total_return": 0.6482110494827027,
+          "annual_turnover": 202.58272368230848,
+          "max_gross_leverage": 1.3,
+          "years": 0.999315537303217
+        },
+        {
+          "cagr": 0.46974122297927945,
+          "mdd": 0.27160662170907623,
+          "sharpe": 0.9592377707631063,
+          "total_return": 0.4693538836945068,
+          "annual_turnover": 263.5621276389278,
+          "max_gross_leverage": 2.0,
+          "years": 0.999315537303217
+        },
+        {
+          "cagr": 0.1413472006925376,
+          "mdd": 0.3344856374988775,
+          "sharpe": 0.5554620151471601,
+          "total_return": 0.14124392217807835,
+          "annual_turnover": 191.78712289142092,
+          "max_gross_leverage": 1.2909692166440836,
+          "years": 0.999315537303217
+        },
+        {
+          "cagr": -0.10867834237782448,
+          "mdd": 0.33432864976247845,
+          "sharpe": -0.1883566349531482,
+          "total_return": -0.10888888521941953,
+          "annual_turnover": 146.47868214895524,
+          "max_gross_leverage": 2.0,
+          "years": 1.002053388090349
+        }
+      ],
+      "config": {
+        "family": "residual_momentum",
+        "params": {
+          "h": 18,
+          "n": 2,
+          "reb": 3,
+          "flow_w": 0.0
+        },
+        "target_vol": 0.45,
+        "leverage_cap": 2.0,
+        "one_way_cost": 0.0008,
+        "adverse_funding": 0.0
+      }
+    }
+  },
+  {
+    "robust_score": -1.9283701873265517,
+    "neighbor_pass_rate": 0.0,
+    "base_candidate": {
+      "score": -1.0990916812019509,
+      "median_cagr": 0.2581034918709515,
+      "worst_cagr": -0.25053788203175886,
+      "worst_mdd": 0.3649523121603995,
+      "median_sharpe": 0.7534915456079034,
+      "folds": [
+        {
+          "cagr": 1.6476044502301073,
+          "mdd": 0.33209468582091395,
+          "sharpe": 1.7234229722052998,
+          "total_return": 1.6458405931572329,
+          "annual_turnover": 283.6140456268298,
+          "max_gross_leverage": 2.6,
+          "years": 0.999315537303217
+        },
+        {
+          "cagr": 0.28066255093671777,
+          "mdd": 0.32512104394394115,
+          "sharpe": 0.7418805618031669,
+          "total_return": 0.28044572659721445,
+          "annual_turnover": 246.5116375964227,
+          "max_gross_leverage": 2.6000000000000005,
+          "years": 0.999315537303217
+        },
+        {
+          "cagr": 0.23554443280518522,
+          "mdd": 0.3649523121603995,
+          "sharpe": 0.7651025294126399,
+          "total_return": 0.23536557366833222,
+          "annual_turnover": 226.4332759188341,
+          "max_gross_leverage": 1.7918631425468117,
+          "years": 0.999315537303217
+        },
+        {
+          "cagr": -0.25053788203175886,
+          "mdd": 0.35547725703708843,
+          "sharpe": -0.6262032062700923,
+          "total_return": -0.25098157919211417,
+          "annual_turnover": 217.6749622309049,
+          "max_gross_leverage": 4.0,
+          "years": 1.002053388090349
+        }
+      ],
+      "config": {
+        "family": "residual_momentum",
+        "params": {
+          "h": 18,
+          "n": 4,
+          "reb": 3,
+          "flow_w": 0.0
+        },
+        "target_vol": 0.6,
+        "leverage_cap": 4.0,
+        "one_way_cost": 0.0008,
+        "adverse_funding": 0.0
+      }
+    },
+    "refined": {
+      "score": -1.3650946815668803,
+      "feasible": false,
+      "median_cagr": 0.26205930113107345,
+      "worst_cagr": -0.2806468771292121,
+      "worst_mdd": 0.34040943821995895,
+      "folds": [
+        {
+          "cagr": 0.7808889332663984,
+          "mdd": 0.32120638979006333,
+          "sharpe": 1.2419535188743374,
+          "total_return": 0.7801855995568088,
+          "annual_turnover": 248.94604203504232,
+          "max_gross_leverage": 3.4921801650500592,
+          "years": 0.999315537303217
+        },
+        {
+          "cagr": 0.3848098643423372,
+          "mdd": 0.3129580555003355,
+          "sharpe": 0.9239607924552934,
+          "total_return": 0.3845013137499935,
+          "annual_turnover": 237.31408317488987,
+          "max_gross_leverage": 2.5789488727726897,
+          "years": 0.999315537303217
+        },
+        {
+          "cagr": 0.1393087379198097,
+          "mdd": 0.34040943821995895,
+          "sharpe": 0.5736461511182516,
+          "total_return": 0.13920703774201204,
+          "annual_turnover": 204.29060380117843,
+          "max_gross_leverage": 1.2,
+          "years": 0.999315537303217
+        },
+        {
+          "cagr": -0.2806468771292121,
+          "mdd": 0.3348423286266118,
+          "sharpe": -0.8720273144663904,
+          "total_return": -0.2811332773202868,
+          "annual_turnover": 197.09588567912567,
+          "max_gross_leverage": 4.0,
+          "years": 1.002053388090349
+        }
+      ],
+      "config": {
+        "family": "residual_momentum",
+        "params": {
+          "h": 18,
+          "n": 4,
+          "reb": 3,
+          "flow_w": 0.0
+        },
+        "target_vol": 0.45,
+        "leverage_cap": 4.0,
+        "one_way_cost": 0.0008,
+        "adverse_funding": 0.0
+      }
+    }
+  },
+  {
+    "robust_score": -2.0384593997754528,
+    "neighbor_pass_rate": 0.0,
+    "base_candidate": {
+      "score": -1.3305154806964152,
+      "median_cagr": 0.097304140853408,
+      "worst_cagr": -0.2818686826706258,
+      "worst_mdd": 0.36278665302536595,
+      "median_sharpe": 0.4787944068977028,
+      "folds": [
+        {
+          "cagr": 0.3662646492995483,
+          "mdd": 0.3068930258515584,
+          "sharpe": 0.8237745742243479,
+          "total_return": 0.36597283616124376,
+          "annual_turnover": 260.4819002702287,
+          "max_gross_leverage": 1.4066313992851578,
+          "years": 0.999315537303217
+        },
+        {
+          "cagr": 0.036954062407120514,
+          "mdd": 0.34521441495529204,
+          "sharpe": 0.31595721076625993,
+          "total_return": 0.03692830735047714,
+          "annual_turnover": 282.3993028845412,
+          "max_gross_leverage": 2.6000000000000005,
+          "years": 0.999315537303217
+        },
+        {
+          "cagr": 0.15765421929969547,
+          "mdd": 0.36278665302536595,
+          "sharpe": 0.6416316030291457,
+          "total_return": 0.15753822535907203,
+          "annual_turnover": 242.1470469309128,
+          "max_gross_leverage": 2.2518005298792305,
+          "years": 0.999315537303217
+        },
+        {
+          "cagr": -0.2818686826706258,
+          "mdd": 0.3548968765726175,
+          "sharpe": -0.738697353177625,
+          "total_return": -0.282356761731435,
+          "annual_turnover": 257.07452995786826,
+          "max_gross_leverage": 4.0,
+          "years": 1.002053388090349
+        }
+      ],
+      "config": {
+        "family": "cross_momentum",
+        "params": {
+          "h": 18,
+          "n": 4,
+          "reb": 3,
+          "flow_w": 0.0,
+          "regime": true,
+          "skip": 6
+        },
+        "target_vol": 0.6,
+        "leverage_cap": 4.0,
+        "one_way_cost": 0.0008,
+        "adverse_funding": 0.0
+      }
+    },
+    "refined": {
+      "score": -1.4644214219007847,
+      "feasible": false,
+      "median_cagr": 0.0706186128312607,
+      "worst_cagr": -0.19063424567349907,
+      "worst_mdd": 0.3417547472343335,
+      "folds": [
+        {
+          "cagr": 0.33530950417409255,
+          "mdd": 0.3000843147469806,
+          "sharpe": 0.781647077424882,
+          "total_return": 0.33504524405656055,
+          "annual_turnover": 243.21488058525568,
+          "max_gross_leverage": 1.3,
+          "years": 0.999315537303217
+        },
+        {
+          "cagr": 0.0809064935183359,
+          "mdd": 0.3134165003467707,
+          "sharpe": 0.3999409709535729,
+          "total_return": 0.08084893545952321,
+          "annual_turnover": 241.78346137205463,
+          "max_gross_leverage": 1.6851725945322518,
+          "years": 0.999315537303217
+        },
+        {
+          "cagr": 0.060330732144185495,
+          "mdd": 0.3417547472343335,
+          "sharpe": 0.35845303941293816,
+          "total_return": 0.06028821752921809,
+          "annual_turnover": 160.7011285321276,
+          "max_gross_leverage": 1.9999999999999998,
+          "years": 0.999315537303217
+        },
+        {
+          "cagr": -0.19063424567349907,
+          "mdd": 0.3316357701280632,
+          "sharpe": -0.45533951989028054,
+          "total_return": -0.1909856773293619,
+          "annual_turnover": 212.7342244393245,
+          "max_gross_leverage": 2.0,
+          "years": 1.002053388090349
+        }
+      ],
+      "config": {
+        "family": "cross_momentum",
+        "params": {
+          "h": 18,
+          "n": 4,
+          "reb": 3,
+          "flow_w": 0.0,
+          "regime": true,
+          "skip": 6
+        },
+        "target_vol": 0.6,
+        "leverage_cap": 2.0,
+        "one_way_cost": 0.0008,
+        "adverse_funding": 0.0
+      }
+    }
+  },
+  {
+    "robust_score": -2.116792998958413,
+    "neighbor_pass_rate": 0.0,
+    "base_candidate": {
+      "score": -1.5894196895652128,
+      "median_cagr": 0.06883205264640979,
+      "worst_cagr": -0.02982652402147934,
+      "worst_mdd": 0.367813485081003,
+      "median_sharpe": 0.35109182014098794,
+      "folds": [
+        {
+          "cagr": 1.4517657823631196,
+          "mdd": 0.3062870906213808,
+          "sharpe": 1.6887433239649448,
+          "total_return": 1.450261271974849,
+          "annual_turnover": 279.3867689220312,
+          "max_gross_leverage": 1.5664916468213779,
+          "years": 0.999315537303217
+        },
+        {
+          "cagr": 0.13055546351780722,
+          "mdd": 0.32715435647794533,
+          "sharpe": 0.493107622001196,
+          "total_return": 0.13046051239756862,
+          "annual_turnover": 221.92015513622417,
+          "max_gross_leverage": 1.6803709909913294,
+          "years": 0.999315537303217
+        },
+        {
+          "cagr": -0.02982652402147934,
+          "mdd": 0.34191308083778893,
+          "sharpe": 0.05548956185651911,
+          "total_return": -0.029806416199339547,
+          "annual_turnover": 218.34139523691087,
+          "max_gross_leverage": 2.709202460442399,
+          "years": 0.999315537303217
+        },
+        {
+          "cagr": 0.007108641775012359,
+          "mdd": 0.367813485081003,
+          "sharpe": 0.20907601828077993,
+          "total_return": 0.007123290441116481,
+          "annual_turnover": 235.06122454847608,
+          "max_gross_leverage": 4.0,
+          "years": 1.002053388090349
+        }
+      ],
+      "config": {
+        "family": "cross_momentum",
+        "params": {
+          "h": 126,
+          "n": 4,
+          "reb": 3,
+          "flow_w": 0.0,
+          "regime": true,
+          "skip": 6
+        },
+        "target_vol": 0.6,
+        "leverage_cap": 4.0,
+        "one_way_cost": 0.0008,
+        "adverse_funding": 0.0
+      }
+    },
+    "refined": {
+      "score": -1.479751930974305,
+      "feasible": false,
+      "median_cagr": 0.16133105898282596,
+      "worst_cagr": -0.043316118928532044,
+      "worst_mdd": 0.34963013349801353,
+      "folds": [
+        {
+          "cagr": 0.35082007229984624,
+          "mdd": 0.3365967262559115,
+          "sharpe": 0.793313809873966,
+          "total_return": 0.3505420669422745,
+          "annual_turnover": 205.6884374507018,
+          "max_gross_leverage": 2.0,
+          "years": 0.999315537303217
+        },
+        {
+          "cagr": 0.11587483163146706,
+          "mdd": 0.32664623097156364,
+          "sharpe": 0.4612220164306215,
+          "total_return": 0.11579109550889655,
+          "annual_turnover": 142.80880927629335,
+          "max_gross_leverage": 2.0,
+          "years": 0.999315537303217
+        },
+        {
+          "cagr": 0.20678728633418486,
+          "mdd": 0.337266370460239,
+          "sharpe": 0.711415251642705,
+          "total_return": 0.2066320397967536,
+          "annual_turnover": 159.94946177918425,
+          "max_gross_leverage": 2.0,
+          "years": 0.999315537303217
+        },
+        {
+          "cagr": -0.043316118928532044,
+          "mdd": 0.34963013349801353,
+          "sharpe": 0.12843458661933077,
+          "total_return": -0.04340310497176669,
+          "annual_turnover": 222.78675883000165,
+          "max_gross_leverage": 2.0,
+          "years": 1.002053388090349
+        }
+      ],
+      "config": {
+        "family": "cross_momentum",
+        "params": {
+          "h": 126,
+          "n": 4,
+          "reb": 3,
+          "flow_w": 0.0,
+          "regime": true,
+          "skip": 6
         },
         "target_vol": 1.5,
         "leverage_cap": 2.0,
@@ -560,61 +1464,59 @@
     }
   },
   {
-    "robust_score": 1.2416206195601567,
-    "neighbor_pass_rate": 0.9166666666666666,
+    "robust_score": -2.1178161207955837,
+    "neighbor_pass_rate": 0.0,
     "base_candidate": {
-      "score": -0.03200332929357487,
-      "median_cagr": 0.1714830689875133,
-      "worst_cagr": -0.15934735844228842,
-      "worst_mdd": 0.2817257746502273,
-      "median_sharpe": 0.6149774842011348,
+      "score": -1.46778952592927,
+      "median_cagr": 0.14974370976805396,
+      "worst_cagr": -0.11860204715153422,
+      "worst_mdd": 0.38462615915862575,
+      "median_sharpe": 0.5507027847609579,
       "folds": [
         {
-          "cagr": 0.22827658492274994,
-          "mdd": 0.2817257746502273,
-          "sharpe": 0.7064542535455486,
-          "total_return": 0.22810373709273146,
-          "annual_turnover": 90.83839866089231,
-          "max_gross_leverage": 4.0,
-          "years": 0.999315537303217
-        },
-        {
-          "cagr": 0.11468955305227668,
-          "mdd": 0.225337076873251,
-          "sharpe": 0.5235007148567212,
-          "total_return": 0.11460671666133981,
-          "annual_turnover": 70.73532876165913,
+          "cagr": 0.8481419542442692,
+          "mdd": 0.30455563073818803,
+          "sharpe": 1.2478817655636736,
+          "total_return": 0.8473651885201985,
+          "annual_turnover": 216.53516317699513,
           "max_gross_leverage": 2.6,
           "years": 0.999315537303217
         },
         {
-          "cagr": 0.5332510752950261,
-          "mdd": 0.11733210705443753,
-          "sharpe": 1.4590382404574749,
-          "total_return": 0.532802614719398,
-          "annual_turnover": 81.0189971105562,
-          "max_gross_leverage": 4.0,
+          "cagr": -0.11860204715153422,
+          "mdd": 0.31792352920310596,
+          "sharpe": -0.08394384454427818,
+          "total_return": -0.11852588163679079,
+          "annual_turnover": 147.8696394145,
+          "max_gross_leverage": 1.6644587119400795,
           "years": 0.999315537303217
         },
         {
-          "cagr": -0.15934735844228842,
-          "mdd": 0.18096585613495209,
-          "sharpe": -0.9267622681834174,
-          "total_return": -0.1596469308026558,
-          "annual_turnover": 19.47912221022949,
+          "cagr": 0.28344809452774,
+          "mdd": 0.351758917296756,
+          "sharpe": 0.8686060917328393,
+          "total_return": 0.28322889022982545,
+          "annual_turnover": 140.52746181945375,
+          "max_gross_leverage": 2.3818547249107453,
+          "years": 0.999315537303217
+        },
+        {
+          "cagr": 0.01603932500836791,
+          "mdd": 0.38462615915862575,
+          "sharpe": 0.2327994777890766,
+          "total_return": 0.01607252323599906,
+          "annual_turnover": 143.9519512412638,
           "max_gross_leverage": 4.0,
           "years": 1.002053388090349
         }
       ],
       "config": {
-        "family": "compression_breakout",
+        "family": "residual_momentum",
         "params": {
-          "breakout": 84,
-          "comp_q": 0.2,
-          "vol_z": 1.0,
-          "flow": 0.1,
-          "hold": 24,
-          "n": 2
+          "h": 126,
+          "n": 4,
+          "reb": 3,
+          "flow_w": 0.0
         },
         "target_vol": 0.6,
         "leverage_cap": 4.0,
@@ -623,122 +1525,118 @@
       }
     },
     "refined": {
-      "score": 0.1416206195601568,
-      "feasible": true,
-      "median_cagr": 0.24179604774211672,
-      "worst_cagr": -0.1398517223050756,
-      "worst_mdd": 0.24808905668720405,
+      "score": -1.46358296171928,
+      "feasible": false,
+      "median_cagr": 0.21104847329410992,
+      "worst_cagr": 0.016104052173587124,
+      "worst_mdd": 0.351779144884538,
       "folds": [
         {
-          "cagr": 0.31751901757116574,
-          "mdd": 0.24808905668720405,
-          "sharpe": 0.927610557661305,
-          "total_return": 0.31727037132873415,
-          "annual_turnover": 102.08745714408072,
-          "max_gross_leverage": 3.0,
+          "cagr": 0.435504459078369,
+          "mdd": 0.31631229679659045,
+          "sharpe": 0.8655490389185828,
+          "total_return": 0.4351492954247995,
+          "annual_turnover": 201.79323937102492,
+          "max_gross_leverage": 1.8448558375598219,
           "years": 0.999315537303217
         },
         {
-          "cagr": 0.1660730779130677,
-          "mdd": 0.17111785739110386,
-          "sharpe": 0.7150583898480884,
-          "total_return": 0.16595045772141082,
-          "annual_turnover": 62.860528165037884,
-          "max_gross_leverage": 2.5,
+          "cagr": 0.016104052173587124,
+          "mdd": 0.3128707098467369,
+          "sharpe": 0.24675368208585075,
+          "total_return": 0.016092941329542976,
+          "annual_turnover": 106.27411624703885,
+          "max_gross_leverage": 1.9999999999999998,
           "years": 0.999315537303217
         },
         {
-          "cagr": 0.4641143901366498,
-          "mdd": 0.09717628995443806,
-          "sharpe": 1.4025254345122653,
-          "total_return": 0.4637323767288868,
-          "annual_turnover": 71.10562445082702,
-          "max_gross_leverage": 3.0,
+          "cagr": 0.2617735656655844,
+          "mdd": 0.3395305177915978,
+          "sharpe": 0.8269069988819189,
+          "total_return": 0.2615727702319035,
+          "annual_turnover": 99.0352707596331,
+          "max_gross_leverage": 2.0,
           "years": 0.999315537303217
         },
         {
-          "cagr": -0.1398517223050756,
-          "mdd": 0.16071392024507658,
-          "sharpe": -0.8682247637109138,
-          "total_return": -0.14011776279330412,
-          "annual_turnover": 17.241505130139906,
-          "max_gross_leverage": 3.0,
+          "cagr": 0.16032338092263543,
+          "mdd": 0.351779144884538,
+          "sharpe": 0.5655809194656383,
+          "total_return": 0.1606777237808643,
+          "annual_turnover": 123.45965012266875,
+          "max_gross_leverage": 2.0,
           "years": 1.002053388090349
         }
       ],
       "config": {
-        "family": "compression_breakout",
+        "family": "residual_momentum",
         "params": {
-          "breakout": 84,
-          "comp_q": 0.2,
-          "vol_z": 1.0,
-          "flow": 0.1,
-          "hold": 24,
-          "n": 2
+          "h": 126,
+          "n": 4,
+          "reb": 3,
+          "flow_w": 0.0
         },
-        "target_vol": 0.45,
-        "leverage_cap": 3.0,
+        "target_vol": 0.8,
+        "leverage_cap": 2.0,
         "one_way_cost": 0.0008,
         "adverse_funding": 0.0
       }
     }
   },
   {
-    "robust_score": 1.1555286209872873,
-    "neighbor_pass_rate": 0.8333333333333334,
+    "robust_score": -2.224091620402021,
+    "neighbor_pass_rate": 0.0,
     "base_candidate": {
-      "score": 0.25211322748620185,
-      "median_cagr": 0.20058026378557403,
-      "worst_cagr": -0.11124131768047452,
-      "worst_mdd": 0.26099311256614166,
-      "median_sharpe": 0.7603506723263073,
+      "score": -1.0407426140632623,
+      "median_cagr": 0.27039363278576156,
+      "worst_cagr": -0.15125953034156514,
+      "worst_mdd": 0.3813701033613329,
+      "median_sharpe": 0.7900063227241949,
       "folds": [
         {
-          "cagr": -0.11124131768047452,
-          "mdd": 0.26099311256614166,
-          "sharpe": -0.14773740193708718,
-          "total_return": -0.11116957563886076,
-          "annual_turnover": 132.12861847850684,
-          "max_gross_leverage": 2.5,
+          "cagr": 0.6846696741497336,
+          "mdd": 0.3150837395633813,
+          "sharpe": 1.1065943913646494,
+          "total_return": 0.684068363056789,
+          "annual_turnover": 249.55522860493508,
+          "max_gross_leverage": 1.690109971575171,
           "years": 0.999315537303217
         },
         {
-          "cagr": 0.09478326166974038,
-          "mdd": 0.23464629985763463,
-          "sharpe": 0.46179120588605344,
-          "total_return": 0.09471540638667819,
-          "annual_turnover": 108.59359271746948,
-          "max_gross_leverage": 2.5,
+          "cagr": 0.21884030555734557,
+          "mdd": 0.3230727094216034,
+          "sharpe": 0.6483094930040912,
+          "total_return": 0.21867521865615047,
+          "annual_turnover": 194.9272012298357,
+          "max_gross_leverage": 2.6,
           "years": 0.999315537303217
         },
         {
-          "cagr": 0.7382647861769525,
-          "mdd": 0.0852009113899449,
-          "sharpe": 1.7913887234020642,
-          "total_return": 0.7376070977345763,
-          "annual_turnover": 103.54839433524532,
-          "max_gross_leverage": 2.5,
+          "cagr": 0.32194696001417755,
+          "mdd": 0.3403906668009219,
+          "sharpe": 0.9317031524442985,
+          "total_return": 0.3216944428445956,
+          "annual_turnover": 168.04079498425585,
+          "max_gross_leverage": 1.5026182261282401,
           "years": 0.999315537303217
         },
         {
-          "cagr": 0.3063772659014077,
-          "mdd": 0.14733047152033596,
-          "sharpe": 1.0589101387665611,
-          "total_return": 0.30709438173642134,
-          "annual_turnover": 34.930637561120086,
-          "max_gross_leverage": 2.5,
+          "cagr": -0.15125953034156514,
+          "mdd": 0.3813701033613329,
+          "sharpe": -0.2372376559320884,
+          "total_return": -0.15154530355360696,
+          "annual_turnover": 166.46545174545025,
+          "max_gross_leverage": 4.0,
           "years": 1.002053388090349
         }
       ],
       "config": {
-        "family": "compression_breakout",
+        "family": "residual_momentum",
         "params": {
-          "breakout": 84,
-          "comp_q": 0.35,
-          "vol_z": 0.5,
-          "flow": 0.1,
-          "hold": 12,
-          "n": 1
+          "h": 42,
+          "n": 4,
+          "reb": 3,
+          "flow_w": 0.0
         },
         "target_vol": 0.6,
         "leverage_cap": 4.0,
@@ -747,58 +1645,56 @@
       }
     },
     "refined": {
-      "score": 0.15552862098728729,
-      "feasible": true,
-      "median_cagr": 0.3252912260956399,
-      "worst_cagr": -0.2434911085884185,
-      "worst_mdd": 0.26928511677927625,
+      "score": -1.5258893052430622,
+      "feasible": false,
+      "median_cagr": 0.40936144450460166,
+      "worst_cagr": -0.22758653975636933,
+      "worst_mdd": 0.35727528939486985,
       "folds": [
         {
-          "cagr": -0.2434911085884185,
-          "mdd": 0.26928511677927625,
-          "sharpe": -0.7859147838379487,
-          "total_return": -0.24334660677309006,
-          "annual_turnover": 95.15856287513621,
+          "cagr": 0.9743064526119765,
+          "mdd": 0.3346265519105931,
+          "sharpe": 1.2514049254069266,
+          "total_return": 0.9733874624860173,
+          "annual_turnover": 223.03306089568136,
           "max_gross_leverage": 2.0,
           "years": 0.999315537303217
         },
         {
-          "cagr": 0.22605134752439127,
-          "mdd": 0.2442133553571496,
-          "sharpe": 0.7258532525858218,
-          "total_return": 0.22588033433666932,
-          "annual_turnover": 126.48842039237945,
+          "cagr": 0.4350555728598855,
+          "mdd": 0.32193651981520766,
+          "sharpe": 0.9329793006788577,
+          "total_return": 0.43470082738883,
+          "annual_turnover": 133.188601274013,
+          "max_gross_leverage": 1.9999999999999998,
+          "years": 0.999315537303217
+        },
+        {
+          "cagr": 0.3836673161493178,
+          "mdd": 0.350321148402276,
+          "sharpe": 1.0248178265917816,
+          "total_return": 0.3833598016640156,
+          "annual_turnover": 116.01301098380858,
           "max_gross_leverage": 2.0,
           "years": 0.999315537303217
         },
         {
-          "cagr": 0.6512737107151807,
-          "mdd": 0.12962333344902643,
-          "sharpe": 1.5726589679727339,
-          "total_return": 0.6507069419736218,
-          "annual_turnover": 109.87282638311021,
-          "max_gross_leverage": 2.0,
-          "years": 0.999315537303217
-        },
-        {
-          "cagr": 0.4245311046668885,
-          "mdd": 0.1560608007771056,
-          "sharpe": 1.2492786668680778,
-          "total_return": 0.4255665114641207,
-          "annual_turnover": 25.148360655737704,
+          "cagr": -0.22758653975636933,
+          "mdd": 0.35727528939486985,
+          "sharpe": -0.432247131626165,
+          "total_return": -0.22799600905582473,
+          "annual_turnover": 146.28805678054883,
           "max_gross_leverage": 2.0,
           "years": 1.002053388090349
         }
       ],
       "config": {
-        "family": "compression_breakout",
+        "family": "residual_momentum",
         "params": {
-          "breakout": 84,
-          "comp_q": 0.35,
-          "vol_z": 0.5,
-          "flow": 0.1,
-          "hold": 12,
-          "n": 1
+          "h": 42,
+          "n": 4,
+          "reb": 3,
+          "flow_w": 0.0
         },
         "target_vol": 1.25,
         "leverage_cap": 2.0,
@@ -808,433 +1704,59 @@
     }
   },
   {
-    "robust_score": 1.155489679692668,
-    "neighbor_pass_rate": 0.8333333333333334,
+    "robust_score": -2.2519943740626305,
+    "neighbor_pass_rate": 0.0,
     "base_candidate": {
-      "score": 0.4197280028489786,
-      "median_cagr": 0.1580159466674349,
-      "worst_cagr": -0.005660483406582095,
-      "worst_mdd": 0.22006013817450554,
-      "median_sharpe": 0.7608658713757084,
+      "score": -1.1087902603573967,
+      "median_cagr": 0.42414562584651916,
+      "worst_cagr": -0.2308700082465932,
+      "worst_mdd": 0.40665889233878183,
+      "median_sharpe": 0.8868618154547102,
       "folds": [
         {
-          "cagr": 0.2542660713086349,
-          "mdd": 0.21284827923665306,
-          "sharpe": 0.873202016495941,
-          "total_return": 0.25407159307586125,
-          "annual_turnover": 84.80967347049774,
-          "max_gross_leverage": 2.5,
+          "cagr": 0.2952977984191263,
+          "mdd": 0.3508610253464206,
+          "sharpe": 0.7217992944091405,
+          "total_return": 0.2950684236814143,
+          "annual_turnover": 217.29495074552943,
+          "max_gross_leverage": 1.8594581257619671,
           "years": 0.999315537303217
         },
         {
-          "cagr": -0.005660483406582095,
-          "mdd": 0.22006013817450554,
-          "sharpe": 0.08413697934191859,
-          "total_return": -0.00565661999554723,
-          "annual_turnover": 60.5079522209975,
-          "max_gross_leverage": 2.5,
+          "cagr": 0.5902207644459829,
+          "mdd": 0.3265788911758416,
+          "sharpe": 1.05192433650028,
+          "total_return": 0.5897159436731958,
+          "annual_turnover": 247.0206897735209,
+          "max_gross_leverage": 1.7343650537638509,
           "years": 0.999315537303217
         },
         {
-          "cagr": 0.35819869028442963,
-          "mdd": 0.0804604421270253,
-          "sharpe": 1.198571860443674,
-          "total_return": 0.3579141032658155,
-          "annual_turnover": 44.198259220252595,
-          "max_gross_leverage": 2.5,
+          "cagr": 0.552993453273912,
+          "mdd": 0.3516797411392264,
+          "sharpe": 1.2070314418430914,
+          "total_return": 0.552525622740319,
+          "annual_turnover": 201.56862553892054,
+          "max_gross_leverage": 1.5284919594631927,
           "years": 0.999315537303217
         },
         {
-          "cagr": 0.06176582202623493,
-          "mdd": 0.07167697600767309,
-          "sharpe": 0.6485297262554759,
-          "total_return": 0.06189649788455376,
-          "annual_turnover": 9.979508196721312,
-          "max_gross_leverage": 2.5,
-          "years": 1.002053388090349
-        }
-      ],
-      "config": {
-        "family": "compression_breakout",
-        "params": {
-          "breakout": 84,
-          "comp_q": 0.35,
-          "vol_z": 1.0,
-          "flow": 0.1,
-          "hold": 6,
-          "n": 1
-        },
-        "target_vol": 0.6,
-        "leverage_cap": 4.0,
-        "one_way_cost": 0.0008,
-        "adverse_funding": 0.0
-      }
-    },
-    "refined": {
-      "score": 0.15548967969266797,
-      "feasible": true,
-      "median_cagr": 0.19039462344260372,
-      "worst_cagr": 0.05838960635074275,
-      "worst_mdd": 0.2657792743741725,
-      "folds": [
-        {
-          "cagr": 0.34967330614817893,
-          "mdd": 0.2065611094830586,
-          "sharpe": 0.9593077327603767,
-          "total_return": 0.349396321224813,
-          "annual_turnover": 102.10949332632319,
-          "max_gross_leverage": 2.5,
-          "years": 0.999315537303217
-        },
-        {
-          "cagr": 0.05838960635074275,
-          "mdd": 0.2657792743741725,
-          "sharpe": 0.3507816455032978,
-          "total_return": 0.058348496925327176,
-          "annual_turnover": 49.45645172883315,
-          "max_gross_leverage": 2.5,
-          "years": 0.999315537303217
-        },
-        {
-          "cagr": 0.27744805666432093,
-          "mdd": 0.1149280769021509,
-          "sharpe": 0.9441076238382196,
-          "total_return": 0.27723397362687896,
-          "annual_turnover": 50.052826548780686,
-          "max_gross_leverage": 2.5,
-          "years": 0.999315537303217
-        },
-        {
-          "cagr": 0.1033411902208865,
-          "mdd": 0.07327445717094982,
-          "sharpe": 0.847552011769702,
-          "total_return": 0.10356401745505761,
-          "annual_turnover": 9.979508196721312,
-          "max_gross_leverage": 2.5,
-          "years": 1.002053388090349
-        }
-      ],
-      "config": {
-        "family": "compression_breakout",
-        "params": {
-          "breakout": 84,
-          "comp_q": 0.35,
-          "vol_z": 1.0,
-          "flow": 0.1,
-          "hold": 6,
-          "n": 1
-        },
-        "target_vol": 1.5,
-        "leverage_cap": 3.0,
-        "one_way_cost": 0.0008,
-        "adverse_funding": 0.0
-      }
-    }
-  },
-  {
-    "robust_score": 1.0936533122555256,
-    "neighbor_pass_rate": 0.8333333333333334,
-    "base_candidate": {
-      "score": 0.44593861109689975,
-      "median_cagr": 0.17815730626989768,
-      "worst_cagr": -0.05686281849246855,
-      "worst_mdd": 0.2086225089324295,
-      "median_sharpe": 0.7592278865491189,
-      "folds": [
-        {
-          "cagr": 0.3538866621669088,
-          "mdd": 0.2086225089324295,
-          "sharpe": 1.1293026431620319,
-          "total_return": 0.35360592477721364,
-          "annual_turnover": 74.94148814363183,
-          "max_gross_leverage": 2.5,
-          "years": 0.999315537303217
-        },
-        {
-          "cagr": 0.07413378391565373,
-          "mdd": 0.17295227305089567,
-          "sharpe": 0.4409545812319063,
-          "total_return": 0.07408120737980917,
-          "annual_turnover": 52.95344203398067,
-          "max_gross_leverage": 2.5,
-          "years": 0.999315537303217
-        },
-        {
-          "cagr": 0.2821808286241416,
-          "mdd": 0.08427139310818732,
-          "sharpe": 1.0775011918663315,
-          "total_return": 0.2819627075868034,
-          "annual_turnover": 33.39783557685565,
-          "max_gross_leverage": 2.5,
-          "years": 0.999315537303217
-        },
-        {
-          "cagr": -0.05686281849246855,
-          "mdd": 0.07167697600767309,
-          "sharpe": -0.7346201120187283,
-          "total_return": -0.05697618864545717,
-          "annual_turnover": 4.989754098360656,
-          "max_gross_leverage": 2.5,
-          "years": 1.002053388090349
-        }
-      ],
-      "config": {
-        "family": "compression_breakout",
-        "params": {
-          "breakout": 84,
-          "comp_q": 0.2,
-          "vol_z": 1.0,
-          "flow": 0.1,
-          "hold": 6,
-          "n": 1
-        },
-        "target_vol": 0.6,
-        "leverage_cap": 4.0,
-        "one_way_cost": 0.0008,
-        "adverse_funding": 0.0
-      }
-    },
-    "refined": {
-      "score": 0.09365331225552576,
-      "feasible": true,
-      "median_cagr": 0.17401447828618777,
-      "worst_cagr": -0.057313300914391796,
-      "worst_mdd": 0.20968713759044766,
-      "folds": [
-        {
-          "cagr": 0.34829604717405305,
-          "mdd": 0.20968713759044766,
-          "sharpe": 1.1157488522758199,
-          "total_return": 0.34802028690506304,
-          "annual_turnover": 74.67926865325131,
-          "max_gross_leverage": 2.5,
-          "years": 0.999315537303217
-        },
-        {
-          "cagr": 0.07011560116884796,
-          "mdd": 0.1754487929983749,
-          "sharpe": 0.4232146823670869,
-          "total_return": 0.07006596632908613,
-          "annual_turnover": 52.99324947513615,
-          "max_gross_leverage": 2.5,
-          "years": 0.999315537303217
-        },
-        {
-          "cagr": 0.2779133554035276,
-          "mdd": 0.08461322924546932,
-          "sharpe": 1.0660459202018637,
-          "total_return": 0.27769887590410036,
-          "annual_turnover": 33.39773181815379,
-          "max_gross_leverage": 2.5,
-          "years": 0.999315537303217
-        },
-        {
-          "cagr": -0.057313300914391796,
-          "mdd": 0.07189452581241018,
-          "sharpe": -0.7414500458224583,
-          "total_return": -0.05742754159964747,
-          "annual_turnover": 4.989754098360656,
-          "max_gross_leverage": 2.5,
-          "years": 1.002053388090349
-        }
-      ],
-      "config": {
-        "family": "compression_breakout",
-        "params": {
-          "breakout": 84,
-          "comp_q": 0.2,
-          "vol_z": 1.0,
-          "flow": 0.1,
-          "hold": 6,
-          "n": 1
-        },
-        "target_vol": 0.6,
-        "leverage_cap": 4.0,
-        "one_way_cost": 0.0008,
-        "adverse_funding": 0.0
-      }
-    }
-  },
-  {
-    "robust_score": 1.0748573194878186,
-    "neighbor_pass_rate": 0.75,
-    "base_candidate": {
-      "score": 0.2125918275127023,
-      "median_cagr": 0.17375173246232212,
-      "worst_cagr": -0.029030516927646355,
-      "worst_mdd": 0.2593807629538536,
-      "median_sharpe": 0.6054361621566462,
-      "folds": [
-        {
-          "cagr": 0.2417435692646699,
-          "mdd": 0.2593807629538536,
-          "sharpe": 0.7253003099828774,
-          "total_return": 0.24155955965086084,
-          "annual_turnover": 150.2500887564237,
-          "max_gross_leverage": 2.5,
-          "years": 0.999315537303217
-        },
-        {
-          "cagr": 0.10575989565997435,
-          "mdd": 0.24429857975049352,
-          "sharpe": 0.4855720143304149,
-          "total_return": 0.10568380989716575,
-          "annual_turnover": 127.15125552899521,
-          "max_gross_leverage": 2.5,
-          "years": 0.999315537303217
-        },
-        {
-          "cagr": 0.734066391386766,
-          "mdd": 0.09243030517013173,
-          "sharpe": 1.7272647622021207,
-          "total_return": 0.7334131605335223,
-          "annual_turnover": 144.6913210411642,
-          "max_gross_leverage": 2.5,
-          "years": 0.999315537303217
-        },
-        {
-          "cagr": -0.029030516927646355,
-          "mdd": 0.20925115544407458,
-          "sharpe": -0.012910535510437316,
-          "total_return": -0.029089252304164037,
-          "annual_turnover": 36.09843143851667,
-          "max_gross_leverage": 2.5,
-          "years": 1.002053388090349
-        }
-      ],
-      "config": {
-        "family": "compression_breakout",
-        "params": {
-          "breakout": 84,
-          "comp_q": 0.35,
-          "vol_z": 1.0,
-          "flow": 0.1,
-          "hold": 24,
-          "n": 1
-        },
-        "target_vol": 0.6,
-        "leverage_cap": 4.0,
-        "one_way_cost": 0.0008,
-        "adverse_funding": 0.0
-      }
-    },
-    "refined": {
-      "score": 0.17485731948781877,
-      "feasible": true,
-      "median_cagr": 0.25664874024536244,
-      "worst_cagr": -0.024495299399059034,
-      "worst_mdd": 0.2492845752777102,
-      "folds": [
-        {
-          "cagr": 0.3199589969872285,
-          "mdd": 0.2492845752777102,
-          "sharpe": 0.9139658315513287,
-          "total_return": 0.31970821896052115,
-          "annual_turnover": 139.06891554051273,
-          "max_gross_leverage": 2.5,
-          "years": 0.999315537303217
-        },
-        {
-          "cagr": 0.19333848350349636,
-          "mdd": 0.17898002783472367,
-          "sharpe": 0.755607483705469,
-          "total_return": 0.19319411965745648,
-          "annual_turnover": 128.84007561132498,
-          "max_gross_leverage": 2.5,
-          "years": 0.999315537303217
-        },
-        {
-          "cagr": 0.614222202454068,
-          "mdd": 0.08085718256108276,
-          "sharpe": 1.6097138975462357,
-          "total_return": 0.6136932162398587,
-          "annual_turnover": 130.9328429330488,
-          "max_gross_leverage": 2.5,
-          "years": 0.999315537303217
-        },
-        {
-          "cagr": -0.024495299399059034,
-          "mdd": 0.1754479311313103,
-          "sharpe": -0.01732647689003677,
-          "total_return": -0.024544975361066257,
-          "annual_turnover": 34.15842521228153,
-          "max_gross_leverage": 2.5,
-          "years": 1.002053388090349
-        }
-      ],
-      "config": {
-        "family": "compression_breakout",
-        "params": {
-          "breakout": 84,
-          "comp_q": 0.35,
-          "vol_z": 1.0,
-          "flow": 0.1,
-          "hold": 24,
-          "n": 1
-        },
-        "target_vol": 0.45,
-        "leverage_cap": 4.0,
-        "one_way_cost": 0.0008,
-        "adverse_funding": 0.0
-      }
-    }
-  },
-  {
-    "robust_score": 1.0314526381865585,
-    "neighbor_pass_rate": 0.8333333333333334,
-    "base_candidate": {
-      "score": -0.018109543770358755,
-      "median_cagr": 0.07259750295277245,
-      "worst_cagr": -0.05686281849246855,
-      "worst_mdd": 0.26487801300733527,
-      "median_sharpe": 0.3759007139670535,
-      "folds": [
-        {
-          "cagr": 0.121850403997388,
-          "mdd": 0.26487801300733527,
-          "sharpe": 0.5395637965144349,
-          "total_return": 0.12176211879029553,
-          "annual_turnover": 48.414132499423275,
+          "cagr": -0.2308700082465932,
+          "mdd": 0.40665889233878183,
+          "sharpe": -0.5457018980436861,
+          "total_return": -0.23128446121287816,
+          "annual_turnover": 153.32439297628264,
           "max_gross_leverage": 4.0,
-          "years": 0.999315537303217
-        },
-        {
-          "cagr": 0.023344601908156903,
-          "mdd": 0.1687238415202148,
-          "sharpe": 0.21223763141967214,
-          "total_return": 0.023328438455257672,
-          "annual_turnover": 46.651258598241355,
-          "max_gross_leverage": 2.6,
-          "years": 0.999315537303217
-        },
-        {
-          "cagr": 0.25943129738168524,
-          "mdd": 0.09165120837632557,
-          "sharpe": 1.0044903428951835,
-          "total_return": 0.2592324761430591,
-          "annual_turnover": 35.91501905183502,
-          "max_gross_leverage": 3.9435715053346247,
-          "years": 0.999315537303217
-        },
-        {
-          "cagr": -0.05686281849246855,
-          "mdd": 0.07167697600767309,
-          "sharpe": -0.7346201120187283,
-          "total_return": -0.05697618864545717,
-          "annual_turnover": 4.989754098360656,
-          "max_gross_leverage": 2.5,
           "years": 1.002053388090349
         }
       ],
       "config": {
-        "family": "compression_breakout",
+        "family": "residual_momentum",
         "params": {
-          "breakout": 84,
-          "comp_q": 0.2,
-          "vol_z": 1.0,
-          "flow": 0.1,
-          "hold": 6,
-          "n": 2
+          "h": 42,
+          "n": 2,
+          "reb": 3,
+          "flow_w": 0.0
         },
         "target_vol": 0.6,
         "leverage_cap": 4.0,
@@ -1243,309 +1765,59 @@
       }
     },
     "refined": {
-      "score": 0.031452638186558454,
-      "feasible": true,
-      "median_cagr": 0.11888224041872952,
-      "worst_cagr": -0.058299419749075265,
-      "worst_mdd": 0.2230822061262826,
+      "score": -1.533162095573025,
+      "feasible": false,
+      "median_cagr": 0.37672418843798716,
+      "worst_cagr": -0.15869221504774955,
+      "worst_mdd": 0.3598540348112007,
       "folds": [
         {
-          "cagr": 0.2838275243617183,
-          "mdd": 0.2230822061262826,
-          "sharpe": 1.025413547422554,
-          "total_return": 0.2836079955601776,
-          "annual_turnover": 52.75117372540864,
-          "max_gross_leverage": 3.0,
+          "cagr": 0.651924150014201,
+          "mdd": 0.3107367826607823,
+          "sharpe": 1.10044686170069,
+          "total_return": 0.651356712885337,
+          "annual_turnover": 223.5255523741491,
+          "max_gross_leverage": 2.0,
           "years": 0.999315537303217
         },
         {
-          "cagr": 0.009023944526187933,
-          "mdd": 0.17190933171830136,
-          "sharpe": 0.1380126208305088,
-          "total_return": 0.009017740206870517,
-          "annual_turnover": 41.342555701482866,
-          "max_gross_leverage": 2.5,
+          "cagr": 0.4011866290498918,
+          "mdd": 0.3041404013352653,
+          "sharpe": 0.884207565760301,
+          "total_return": 0.40086315678982887,
+          "annual_turnover": 214.84843480630792,
+          "max_gross_leverage": 1.6391250591534603,
           "years": 0.999315537303217
         },
         {
-          "cagr": 0.22874053631127111,
-          "mdd": 0.08480887231622058,
-          "sharpe": 0.9474937333832899,
-          "total_return": 0.22856730561957095,
-          "annual_turnover": 33.52626220842859,
-          "max_gross_leverage": 3.0,
+          "cagr": 0.35226174782608255,
+          "mdd": 0.30002255052724325,
+          "sharpe": 0.8975937443277913,
+          "total_return": 0.35198245866870637,
+          "annual_turnover": 213.50429881695624,
+          "max_gross_leverage": 1.570379573891591,
           "years": 0.999315537303217
         },
         {
-          "cagr": -0.058299419749075265,
-          "mdd": 0.07207480348837891,
-          "sharpe": -0.78089801610719,
-          "total_return": -0.05841556450804586,
-          "annual_turnover": 4.989754098360656,
-          "max_gross_leverage": 2.5,
+          "cagr": -0.15869221504774955,
+          "mdd": 0.3598540348112007,
+          "sharpe": -0.30676051007767013,
+          "total_return": -0.15899067556377589,
+          "annual_turnover": 126.6025586762797,
+          "max_gross_leverage": 2.0,
           "years": 1.002053388090349
         }
       ],
       "config": {
-        "family": "compression_breakout",
+        "family": "residual_momentum",
         "params": {
-          "breakout": 84,
-          "comp_q": 0.2,
-          "vol_z": 1.0,
-          "flow": 0.1,
-          "hold": 6,
-          "n": 2
+          "h": 42,
+          "n": 2,
+          "reb": 3,
+          "flow_w": 0.0
         },
         "target_vol": 0.45,
-        "leverage_cap": 3.0,
-        "one_way_cost": 0.0008,
-        "adverse_funding": 0.0
-      }
-    }
-  },
-  {
-    "robust_score": 0.8399012840791026,
-    "neighbor_pass_rate": 0.5833333333333334,
-    "base_candidate": {
-      "score": 0.46858622820826396,
-      "median_cagr": 0.25346579034735317,
-      "worst_cagr": -0.1438610801280925,
-      "worst_mdd": 0.2462697158813495,
-      "median_sharpe": 0.7635590409204116,
-      "folds": [
-        {
-          "cagr": 0.39551121838293546,
-          "mdd": 0.2462697158813495,
-          "sharpe": 1.0193550446733617,
-          "total_return": 0.39519293216464924,
-          "annual_turnover": 123.65621486025013,
-          "max_gross_leverage": 2.5,
-          "years": 0.999315537303217
-        },
-        {
-          "cagr": 0.11142036231177088,
-          "mdd": 0.24477473520634996,
-          "sharpe": 0.5077630371674615,
-          "total_return": 0.11134000305637048,
-          "annual_turnover": 101.84192283449865,
-          "max_gross_leverage": 2.5,
-          "years": 0.999315537303217
-        },
-        {
-          "cagr": 0.7107644300082439,
-          "mdd": 0.08813066588942331,
-          "sharpe": 1.7852683658174107,
-          "total_return": 0.7101358128961368,
-          "annual_turnover": 98.46810155530554,
-          "max_gross_leverage": 2.5,
-          "years": 0.999315537303217
-        },
-        {
-          "cagr": -0.1438610801280925,
-          "mdd": 0.15729167369683605,
-          "sharpe": -0.9236632509798359,
-          "total_return": -0.1441340915081354,
-          "annual_turnover": 28.249221692956084,
-          "max_gross_leverage": 2.5,
-          "years": 1.002053388090349
-        }
-      ],
-      "config": {
-        "family": "compression_breakout",
-        "params": {
-          "breakout": 84,
-          "comp_q": 0.2,
-          "vol_z": 1.0,
-          "flow": 0.1,
-          "hold": 24,
-          "n": 1
-        },
-        "target_vol": 0.6,
-        "leverage_cap": 4.0,
-        "one_way_cost": 0.0008,
-        "adverse_funding": 0.0
-      }
-    },
-    "refined": {
-      "score": 0.13990128407910254,
-      "feasible": true,
-      "median_cagr": 0.3105213980825202,
-      "worst_cagr": -0.20206843889265913,
-      "worst_mdd": 0.24888591843095442,
-      "folds": [
-        {
-          "cagr": 0.3649620542248837,
-          "mdd": 0.2428774816737319,
-          "sharpe": 0.8726474280060424,
-          "total_return": 0.364671410263417,
-          "annual_turnover": 167.29026283555785,
-          "max_gross_leverage": 2.5,
-          "years": 0.999315537303217
-        },
-        {
-          "cagr": 0.25608074194015673,
-          "mdd": 0.24888591843095442,
-          "sharpe": 0.8372535588915124,
-          "total_return": 0.25588473955741664,
-          "annual_turnover": 109.55331136611176,
-          "max_gross_leverage": 2.5,
-          "years": 0.999315537303217
-        },
-        {
-          "cagr": 0.8496492321088007,
-          "mdd": 0.11758180915252303,
-          "sharpe": 1.8096428281429089,
-          "total_return": 0.8488708012206616,
-          "annual_turnover": 116.46482205004898,
-          "max_gross_leverage": 2.5,
-          "years": 0.999315537303217
-        },
-        {
-          "cagr": -0.20206843889265913,
-          "mdd": 0.2117012694117253,
-          "sharpe": -1.1512899392492406,
-          "total_return": -0.20243820749060992,
-          "annual_turnover": 31.218591193488713,
-          "max_gross_leverage": 2.5,
-          "years": 1.002053388090349
-        }
-      ],
-      "config": {
-        "family": "compression_breakout",
-        "params": {
-          "breakout": 84,
-          "comp_q": 0.2,
-          "vol_z": 1.0,
-          "flow": 0.1,
-          "hold": 24,
-          "n": 1
-        },
-        "target_vol": 1.0,
-        "leverage_cap": 6.0,
-        "one_way_cost": 0.0008,
-        "adverse_funding": 0.0
-      }
-    }
-  },
-  {
-    "robust_score": 0.7556406888524742,
-    "neighbor_pass_rate": 0.5833333333333334,
-    "base_candidate": {
-      "score": 0.36529456865746474,
-      "median_cagr": 0.1799847717915275,
-      "worst_cagr": -0.10731053081840114,
-      "worst_mdd": 0.23464629985763485,
-      "median_sharpe": 0.649922486487168,
-      "folds": [
-        {
-          "cagr": 0.2434622428419897,
-          "mdd": 0.22550261017837503,
-          "sharpe": 0.7541327767461413,
-          "total_return": 0.2432768015373148,
-          "annual_turnover": 117.02959840382418,
-          "max_gross_leverage": 2.5,
-          "years": 0.999315537303217
-        },
-        {
-          "cagr": 0.1165073007410653,
-          "mdd": 0.23464629985763485,
-          "sharpe": 0.5457121962281948,
-          "total_return": 0.11642308416592329,
-          "annual_turnover": 91.37088119307572,
-          "max_gross_leverage": 2.5,
-          "years": 0.999315537303217
-        },
-        {
-          "cagr": 0.6396106559562107,
-          "mdd": 0.09100480090276464,
-          "sharpe": 1.6997500306005446,
-          "total_return": 0.6390558422958657,
-          "annual_turnover": 95.12103507930138,
-          "max_gross_leverage": 2.5,
-          "years": 0.999315537303217
-        },
-        {
-          "cagr": -0.10731053081840114,
-          "mdd": 0.12544586332020635,
-          "sharpe": -0.8961489408981284,
-          "total_return": -0.10751858661412772,
-          "annual_turnover": 14.969809180222393,
-          "max_gross_leverage": 2.5,
-          "years": 1.002053388090349
-        }
-      ],
-      "config": {
-        "family": "compression_breakout",
-        "params": {
-          "breakout": 84,
-          "comp_q": 0.2,
-          "vol_z": 0.5,
-          "flow": 0.1,
-          "hold": 12,
-          "n": 1
-        },
-        "target_vol": 0.6,
-        "leverage_cap": 4.0,
-        "one_way_cost": 0.0008,
-        "adverse_funding": 0.0
-      }
-    },
-    "refined": {
-      "score": 0.05564068885247411,
-      "feasible": true,
-      "median_cagr": 0.19930393199266982,
-      "worst_cagr": -0.10259508422055896,
-      "worst_mdd": 0.25491399635039014,
-      "folds": [
-        {
-          "cagr": 0.26958743226710347,
-          "mdd": 0.234969008227629,
-          "sharpe": 0.7596675747387597,
-          "total_return": 0.2693800293931492,
-          "annual_turnover": 131.00113344016356,
-          "max_gross_leverage": 2.5,
-          "years": 0.999315537303217
-        },
-        {
-          "cagr": 0.12902043171823618,
-          "mdd": 0.25491399635039014,
-          "sharpe": 0.570355279737992,
-          "total_return": 0.1289266593902747,
-          "annual_turnover": 91.51168219949666,
-          "max_gross_leverage": 2.5,
-          "years": 0.999315537303217
-        },
-        {
-          "cagr": 0.7523915768378493,
-          "mdd": 0.10905823811872706,
-          "sharpe": 1.771370664123824,
-          "total_return": 0.7517188386486533,
-          "annual_turnover": 105.61745096028928,
-          "max_gross_leverage": 2.5,
-          "years": 0.999315537303217
-        },
-        {
-          "cagr": -0.10259508422055896,
-          "mdd": 0.12555711959971894,
-          "sharpe": -0.8055727529883296,
-          "total_return": -0.10279453306768804,
-          "annual_turnover": 14.969878960807101,
-          "max_gross_leverage": 2.5,
-          "years": 1.002053388090349
-        }
-      ],
-      "config": {
-        "family": "compression_breakout",
-        "params": {
-          "breakout": 84,
-          "comp_q": 0.2,
-          "vol_z": 0.5,
-          "flow": 0.1,
-          "hold": 12,
-          "n": 1
-        },
-        "target_vol": 0.8,
-        "leverage_cap": 4.0,
+        "leverage_cap": 2.0,
         "one_way_cost": 0.0008,
         "adverse_funding": 0.0
       }
