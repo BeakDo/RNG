@@ -1,7 +1,7 @@
 {
-  "research_run_id": "30301296834",
-  "research_head_sha": "d74719ebdee225374cde066e4a3eed742c6ea3cf",
-  "research_conclusion": "failure",
+  "research_run_id": "30301771323",
+  "research_head_sha": "26edb788246269880516a1fd234e1f859ac6dbc3",
+  "research_conclusion": "success",
   "artifact_download_outcome": "success",
-  "collected_at": "2026-07-27T20:08:58Z"
+  "collected_at": "2026-07-27T20:27:25Z"
 }

@@ -479,223 +479,233 @@ def backtest(base_weights: pd.DataFrame, f: dict, cfg: Config,
         # Funding entries exist only on settlement bars. Missing observations receive
         # an adverse stress only in the explicit stress test.
         fund = -float(np.nansum(w * funding[t]))
-        if funding_stress > 0 and idx[t].hour in (0, 86)
-ar=/,pd.readrnly=         shoidx[t].hour in (0, 86)].to_numpy(dtype=bo_.hoequi      v:nt = (f["close"] [llnas).    lcitr ust5rage_cap, max(0.0, vol_scale) _sca
-    lins)
-
-
-d     oing[t]))
-        i dict) ax(0.ax()
-     e) _sca
-    linhtsO:
-            dd_scalpy(dtype=bding_strempy()
-    fundi)
-     e) _sca
-  O:
-            dd_scalc)
-     e) _sca
-  O:
-            t[ent = (f["close"] trempy()rsor, "endTi"pd.DataFrame]):
-  _sca
-  Ouring re:}type=bdingesearc >= red).sum()
-        iempy()rsor, "e _wick (f["cl                0.0):
-    idx = base_weights.index
-    mask = (idx _sca
- -,calc)
-     e) _sca
-  O:
-       ,esor, "endTie _strempy()
-    fun= c1.    cfg.one__p["w fun
-     versified bwer=0)_r (f["r, montverse stre  cfg.one__p p["flow"])
-        short_evdw * funditre  cfg.one__p    cfminimu tat(n_shoendTie _stre(idx _sca
- -,calc .ng(holat(n_shoendTi prev_w). "funding_di,:*e(idxat(n_s"h"]
- )]rt_active, -strength.abs())
-    versified bwer=0)   sANAUSridx rear, mo stre  d}]               shor=r e_volume_scale = 0.30
-       :ose, "re  d}]    funding[t]))
-
-
-
-
-
-
-
-cfg.one__p    c
-        ave _strempydr1.    np.stdn_DIR / f"{symbol}ca
- als, ibwer=0)  [z"].clia
-               ,   mieclia
- a
- trengt                                 ""
-    df = pd.c       s(w). f"{symb}o2              ,))
-    versi/Et   ifflow_z"])
- u     ""
- uve _strempyd    ,   mq)
- als, ibwer=0)  [z"].clia
-               ,   mieclia
- a
- trengt                                 ""
-   aFraEt irz"].clia
-     c"
-   dable"] & f      s)           ""
-   a,cllse- 1
-      c"
-  a,clld}]       s)       8 a,clld}x_weigh,                             instance(sho0
-0dx _scaet_mocscaet(n        idx[t]  true_range = pd.DataFrame(
-  /,pd.readrnly=        eive
-  ,     [aet_mocsck"cs_ran_=  ""
- u;
- als,c6nly=        eive  i   ,ram)
-   D     eive
- " eive
- " igh,           t_mocscaet(nD   clia
-     cdxat(n_s"h"]
- )]rttse, "ret": ret, "f]scaetTrue
-        short_on =: uaet(nD   clia
-  idx[t] d, i dict) ax(0.ax()
-     e) _sca
-  Aim      =: NAUS_v_vol,:sl4 _sc r 
-  z, Not",,b}uaeu}),[
-0dx m): uaet(nia
-   fw=es compu     s)  n )ieclia
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
- uaet(nx()
-  
-
-
-
-
-
-
-
-
-
-aes 
-
-
-,     short_eve)=o -p["2"(   
-
-
-
-
-
-    lized returns.
-   "
- uve _stremp[8).e)
-  
-
-
-
-
-
-
-
-
-
-aeser=0)_r .<cr f"{symbol}ca
- als, is, is, is, is, is, is, is,w_ccr f"
-
-
-
-ld}]   r s) 
-
-
-aeser=0n> p["vol_z"]) & (fk 
- -,calc)
-  c-p["2"(   
-
-
-
-
-
- u"
-
-
-
-ld}        ld}]   fp["2   uchosen], 20.0)
-0iecle_ol}ca
- ")  [z"ed}]   fp[r .<cr er * c is-,cd,f,")  "n"]ntvers (0, 86)ndex = ds, is, is, is_lol_z"]      r s) 
-
-
-aeser=0n> p[",-ocd,f,")   fp[,")cd,f,"
-
-aeso="fg"]) & (f[_:"
-
-   mieclia
- a
- t.c   l}ca
- is, / np.abs(w).sum()[ reatype=boo  if giscalpyalp 
-
-m()[ reatype,3).k eive  i   ,ra      s, is, i    is-,cd,f[z"f,"
-
-ae0vers (p(w, -2.5, 2.5)
-     # Per-syick (   
-
-
-
-
-a,cd2 only priorng)
-  48)bs()      #ied b] dd2 .5)
-   ,                 .clia
-             sired * e": panel["fun Per-symbol c):
-). f"{symb}o)
-   , (w, -2.5fods=1).max().asts[0"{symb}o)
-tle_o  
-
-
-
-
-a,cd2 o, "endf  , ((x[t] d, i di -2
-tle_o    t_mfab] dd2,ax()
-     e) _sca
-    linhtsO:
-            dd_scalpy(dtype=bding_strempy()
-  x m): uaet(nia
- 4:" dd_scalpy(dtype=bdinr                                                                                            linh max(0.0,{"
- u;
- adtype,x().]atus_     d "endur1(& (idx < en/r_sca
-  e         
- a  , ((x[t-l c):
-). f"{symb}o)
-   , (w, -2.       
- a 5fods=1).max().assymb}o
-   Fos
- a a
-  Ouring re:}ty     
- a    
- m clf 
- a    
-,t] d, i di -2
-tle_o((idx < en/r_sca
-ws w, fre<endur        ifflow_a{ rames)
-   r2
-tle_o((idx < en/r_sca
-w   s, is, i    is-,cd,w_a{ r     le_o((idx <dur        ifflow_a{ ramed4_n/re
- alf["qv_z{ ramed4_n/re
- alf(= 1.0
-        lev = min(cfg.leverage_cap, max(0.0, vol_scale)) 9l_rank.shi8 min(cfg,g.lever0, oo  if giscas-,cd,wtemp     e   zcl2.=_    oo  iisca
+        if funding_stress > 0 and idx[t].hour in (0, 8, 16):
+            missing_exposure = float(np.abs(w[~funding_av[t]]).sum())
+            fund -= missing_exposure * funding_stress
+        bar_ret = max(-0.95, gross_ret - cost + fund)
+        equity *= 1.0 + bar_ret
+        peak = max(peak, equity)
+        realized.append(bar_ret)
+        records.append((idx[t], equity, bar_ret, equity/peak-1.0, turnover, np.abs(w).sum()))
+        prev_w = w
+    curve = pd.DataFrame(records, columns=["timestamp","equity","return","drawdown","turnover","gross_leverage"]).set_index("timestamp")
+    years = len(curve) / BARS_PER_YEAR
+    cagr = max(curve.equity.iloc[-1], 1e-12) ** (1/max(years, 1e-9)) - 1
+    mdd = abs(float(curve.drawdown.min()))
+    ann_vol = curve["return"].std() * math.sqrt(BARS_PER_YEAR)
+    sharpe = curve["return"].mean() * BARS_PER_YEAR / ann_vol if ann_vol > 0 else -99
+    stats = {
+        "cagr": float(cagr), "mdd": mdd, "sharpe": float(sharpe),
+        "total_return": float(curve.equity.iloc[-1]-1),
+        "annual_turnover": float(curve.turnover.mean()*BARS_PER_YEAR),
+        "max_gross_leverage": float(curve.gross_leverage.max()),
+        "years": float(years),
+    }
+    return curve, stats
+
+
+def configs() -> list[Config]:
+    out = []
+    for h, n, reb, flow_w, regime in itertools.product([18,42,126],[2,4],[1,3],[0.0,0.6],[True,False]):
+        out.append(Config("cross_momentum", {"h":h,"n":n,"reb":reb,"flow_w":flow_w,"regime":regime,"skip":6}))
+    for h, n, reb, flow_w in itertools.product([18,42,126],[2,4],[1,3],[0.0,0.5]):
+        out.append(Config("residual_momentum", {"h":h,"n":n,"reb":reb,"flow_w":flow_w}))
+    for br, cq, vz, fl, hold, n in itertools.product([18,42,84],[0.2,0.35],[0.5,1.0],[0.10],[6,12,24],[1,2]):
+        out.append(Config("compression_breakout", {"breakout":br,"comp_q":cq,"vol_z":vz,"flow":fl,"hold":hold,"n":n}))
+    for rz, vz, fl, hold, n in itertools.product([1.5,2.0,2.5],[0.5,1.0],[0.12],[3,6,12],[1,2]):
+        out.append(Config("flow_continuation", {"rz":rz,"vol_z":vz,"flow":fl,"hold":hold,"n":n}))
+    for rz, vz, wick, hold, n in itertools.product([1.8,2.4,3.0],[0.5,1.0],[0.008,0.015],[2,3,6],[1]):
+        out.append(Config("exhaustion_reversal", {"rz":rz,"vol_z":vz,"wick":wick,"hold":hold,"n":n}))
+    for h,n,reb,fw in itertools.product([18,42],[2,4],[1,3],[0.0,0.4]):
+        out.append(Config("funding_dislocation", {"h":h,"n":n,"reb":reb,"flow_w":fw}))
+    return out
+
+
+def folds():
+    return [
+        (pd.Timestamp("2021-01-01",tz="UTC"), pd.Timestamp("2022-01-01",tz="UTC")),
+        (pd.Timestamp("2022-01-01",tz="UTC"), pd.Timestamp("2023-01-01",tz="UTC")),
+        (pd.Timestamp("2023-01-01",tz="UTC"), pd.Timestamp("2024-01-01",tz="UTC")),
+        (pd.Timestamp("2024-01-01",tz="UTC"), HOLDOUT_START),
+    ]
+
+
+def score_config(cfg: Config, f: dict):
+    base = make_base_weights(cfg, f)
+    rows = []
+    for a,b in folds():
+        _, st = backtest(base, f, cfg, a, b)
+        if st is None:
+            return None
+        rows.append(st)
+    c = np.array([x["cagr"] for x in rows])
+    d = np.array([x["mdd"] for x in rows])
+    sh = np.array([x["sharpe"] for x in rows])
+    # Strongly favor repeatable fold performance, not a single explosive year.
+    score = (
+        2.0*np.median(np.log1p(np.clip(c,-0.95,30)))
+        +0.8*np.quantile(np.log1p(np.clip(c,-0.95,30)),0.25)
+        +0.25*np.median(sh)
+        -12*max(0,float(d.max())-0.25)
+        -0.45*np.std(np.clip(c,-0.95,30))
+        -0.0005*np.median([x["annual_turnover"] for x in rows])
+    )
+    return {"score":float(score),"median_cagr":float(np.median(c)),"worst_cagr":float(c.min()),
+            "worst_mdd":float(d.max()),"median_sharpe":float(np.median(sh)),"folds":rows,
+            "config":asdict(cfg)}, base
+
+
+def leverage_refine(candidate: dict, f: dict):
+    base_cfg = Config(**candidate["config"])
+    base = make_base_weights(base_cfg, f)
+    options=[]
+    for tv,cap in itertools.product([0.45,0.60,0.80,1.00,1.25,1.50,2.00],[2.0,3.0,4.0,6.0,8.0]):
+        cfg=Config(base_cfg.family,base_cfg.params,tv,cap,base_cfg.one_way_cost,base_cfg.adverse_funding)
+        sts=[]
+        for a,b in folds():
+            _,st=backtest(base,f,cfg,a,b,funding_stress=0.0001)
+            sts.append(st)
+        c=np.array([x["cagr"] for x in sts]); d=np.array([x["mdd"] for x in sts])
+        feasible=d.max()<=0.27
+        score=(np.median(np.log1p(np.clip(c,-.95,50)))+0.5*np.quantile(np.log1p(np.clip(c,-.95,50)),.25)
+               -20*max(0,float(d.max())-.27)-0.5*np.std(np.clip(c,-.95,50)))
+        options.append({"score":float(score),"feasible":bool(feasible),"median_cagr":float(np.median(c)),
+                        "worst_cagr":float(c.min()),"worst_mdd":float(d.max()),"folds":sts,"config":asdict(cfg)})
+    feasible=[x for x in options if x["feasible"]]
+    chosen=max(feasible or options,key=lambda x:x["score"])
+    return chosen, sorted(options,key=lambda x:x["score"],reverse=True)
+
+
+def parameter_neighbors(cfg: Config):
+    neighbors=[]
+    p=cfg.params.copy()
+    numeric=[k for k,v in p.items() if isinstance(v,(int,float)) and not isinstance(v,bool)]
+    for k in numeric:
+        for factor in (0.85,1.15):
+            q=p.copy(); val=q[k]
+            q[k]=max(1,round(val*factor)) if isinstance(val,int) else val*factor
+            neighbors.append(Config(cfg.family,q,cfg.target_vol,cfg.leverage_cap,cfg.one_way_cost,cfg.adverse_funding))
+    return neighbors[:20]
+
+
+def run_search():
+    symbols=download_all()
+    fetch_all_funding(symbols)
+    symbols,panel=load_panel(symbols)
+    f=build_features(panel)
+    rows=[]; bases={}
+    all_cfg=configs()
+    print("symbols",len(symbols),"configs",len(all_cfg),flush=True)
+    for i,cfg in enumerate(all_cfg,1):
+        try:
+            res,base=score_config(cfg,f)
+            if res:
+                key=json.dumps(res["config"],sort_keys=True)
+                rows.append(res); bases[key]=base
+        except Exception as e:
+            print("config error",cfg.family,e,flush=True)
+        if i%100==0:
+            print("tested",i,flush=True)
+    rows.sort(key=lambda x:x["score"],reverse=True)
+    pd.DataFrame([{k:v for k,v in r.items() if k not in ("folds","config")} | {"family":r["config"]["family"],"params":json.dumps(r["config"]["params"],sort_keys=True)} for r in rows]).to_csv(OUT_DIR/"leaderboard.csv",index=False)
+
+    # Family champions and fixed equal-weight ensembles. All selection remains pre-holdout.
+    champions=[]
+    for fam in sorted({r["config"]["family"] for r in rows}):
+        champions.append(next(r for r in rows if r["config"]["family"]==fam))
+    champions.sort(key=lambda x: x["score"], reverse=True)
+    candidates=rows[:15]
+    for n in (3,4,5,6):
+        chosen=champions[:n] if len(champions)>=n else champions
+        if len(chosen)<2: continue
+        matrices=[]
+        for r in chosen:
+            cfg=Config(**r["config"]); matrices.append(make_base_weights(cfg,f))
+        ensemble=sum(matrices)/len(matrices)
+        cfg=Config("ensemble",{"members":[r["config"] for r in chosen]},0.60,4.0)
+        sts=[]
+        for a,b in folds():
+            _,st=backtest(ensemble,f,cfg,a,b)
+            sts.append(st)
+        c=np.array([x["cagr"] for x in sts]); d=np.array([x["mdd"] for x in sts]); sh=np.array([x["sharpe"] for x in sts])
+        score=2*np.median(np.log1p(np.clip(c,-.95,30)))+0.8*np.quantile(np.log1p(np.clip(c,-.95,30)),.25)+.25*np.median(sh)-12*max(0,float(d.max())-.25)-.45*np.std(np.clip(c,-.95,30))
+        candidates.append({"score":float(score),"median_cagr":float(np.median(c)),"worst_cagr":float(c.min()),"worst_mdd":float(d.max()),"median_sharpe":float(np.median(sh)),"folds":sts,"config":asdict(cfg),"_ensemble_base":ensemble})
+    candidates.sort(key=lambda x:x["score"],reverse=True)
+
+    robust=[]
+    for cand in candidates[:12]:
+        if cand["config"]["family"]=="ensemble":
+            refined_cfg=Config(**cand["config"]); base=cand["_ensemble_base"]
+            # fixed risk grid for ensemble
+            opts=[]
+            for tv,cap in itertools.product([.45,.6,.8,1.0,1.25,1.5,2.0],[2.,3.,4.,6.,8.]):
+                cfg=Config("ensemble",refined_cfg.params,tv,cap)
+                sts=[backtest(base,f,cfg,a,b,0.0001)[1] for a,b in folds()]
+                c=np.array([x["cagr"] for x in sts]); d=np.array([x["mdd"] for x in sts])
+                sc=np.median(np.log1p(np.clip(c,-.95,50)))+.5*np.quantile(np.log1p(np.clip(c,-.95,50)),.25)-20*max(0,float(d.max())-.27)-.5*np.std(np.clip(c,-.95,50))
+                opts.append({"score":float(sc),"feasible":bool(d.max()<=.27),"median_cagr":float(np.median(c)),"worst_cagr":float(c.min()),"worst_mdd":float(d.max()),"folds":sts,"config":asdict(cfg)})
+            feas=[x for x in opts if x["feasible"]]; ref=max(feas or opts,key=lambda x:x["score"])
+            neighbor_rate=1.0
+        else:
+            ref,_=leverage_refine(cand,f)
+            cfg=Config(**ref["config"])
+            neigh=parameter_neighbors(cfg)
+            good=0
+            for ng in neigh:
+                try:
+                    b=make_base_weights(ng,f)
+                    sts=[backtest(b,f,ng,a,z,0.0001)[1] for a,z in folds()]
+                    if max(x["mdd"] for x in sts)<=.30 and np.median([x["cagr"] for x in sts])>=max(0,ref["median_cagr"]*.4): good+=1
+                except Exception: pass
+            neighbor_rate=good/max(1,len(neigh))
+        robust_score=ref["score"]+1.2*neighbor_rate-8*max(0,ref["worst_mdd"]-.27)
+        robust.append({"robust_score":float(robust_score),"neighbor_pass_rate":float(neighbor_rate),"base_candidate":{k:v for k,v in cand.items() if not k.startswith("_")},"refined":ref})
+    robust.sort(key=lambda x:x["robust_score"],reverse=True)
+    frozen=robust[0]
+    frozen["symbols"]=symbols
+    frozen["data_start"]=str(START); frozen["preholdout_end"]=str(HOLDOUT_START); frozen["holdout_start"]=str(HOLDOUT_START); frozen["data_end_exclusive"]=str(END_EXCLUSIVE)
+    frozen["holdout_used_in_selection"]=False
+    frozen["tested_config_count"]=len(all_cfg)
+    frozen["created_at_utc"]=datetime.now(timezone.utc).isoformat()
+    (OUT_DIR/"frozen_candidate.json").write_text(json.dumps(frozen,indent=2),encoding="utf-8")
+    (OUT_DIR/"robust_candidates.json").write_text(json.dumps(robust,indent=2),encoding="utf-8")
+    summary={"symbols":symbols,"tested":len(all_cfg),"family_champions":champions,"frozen":frozen}
+    (OUT_DIR/"search_summary.json").write_text(json.dumps(summary,indent=2),encoding="utf-8")
+    print("FROZEN",json.dumps(frozen["refined"],indent=2),flush=True)
+
+
+def reconstruct_base(cfg: Config,f:dict):
+    if cfg.family!="ensemble": return make_base_weights(cfg,f)
+    mats=[]
+    for member in cfg.params["members"]:
+        mats.append(make_base_weights(Config(**member),f))
+    return sum(mats)/len(mats)
+
+
+def run_holdout():
+    lock=OUT_DIR/"HOLDOUT_OPENED.lock"
+    if lock.exists():
+        raise RuntimeError("holdout already opened")
+    frozen=json.loads((OUT_DIR/"frozen_candidate.json").read_text())
+    symbols,panel=load_panel(frozen["symbols"])
+    f=build_features(panel)
+    cfg=Config(**frozen["refined"]["config"])
+    base=reconstruct_base(cfg,f)
+    curve,st=backtest(base,f,cfg,HOLDOUT_START,END_EXCLUSIVE,0.0)
+    _,stress=backtest(base,f,cfg,HOLDOUT_START,END_EXCLUSIVE,0.00015)
+    result={"target":{"cagr":10.0,"mdd":0.30},"holdout":st,"cost_funding_stress":stress,
+            "pass":bool(st["cagr"]>=10 and st["mdd"]<=.30 and stress["mdd"]<=.30),
+            "opened_at_utc":datetime.now(timezone.utc).isoformat(),"config":asdict(cfg)}
+    curve.to_csv(OUT_DIR/"holdout_curve.csv")
+    (OUT_DIR/"holdout_result.json").write_text(json.dumps(result,indent=2),encoding="utf-8")
+    lock.write_text(result["opened_at_utc"])
+    print("HOLDOUT",json.dumps(result,indent=2),flush=True)
+
+
+def main():
+    ap=argparse.ArgumentParser(); ap.add_argument("mode",choices=["search","holdout"])
+    args=ap.parse_args()
+    if args.mode=="search": run_search()
+    else: run_holdout()
+
+if __name__=="__main__": main()

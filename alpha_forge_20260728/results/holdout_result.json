@@ -1,0 +1,41 @@
+{
+  "target": {
+    "cagr": 10.0,
+    "mdd": 0.3
+  },
+  "holdout": {
+    "cagr": 0.08595855359551607,
+    "mdd": 0.3100987711619072,
+    "sharpe": 0.3902335249409642,
+    "total_return": 0.13119122978914044,
+    "annual_turnover": 79.4906806992963,
+    "max_gross_leverage": 2.0,
+    "years": 1.4948665297741273
+  },
+  "cost_funding_stress": {
+    "cagr": 0.08140495427573446,
+    "mdd": 0.31048540833495064,
+    "sharpe": 0.3793117939049825,
+    "total_return": 0.12410804021824773,
+    "annual_turnover": 77.96946788504698,
+    "max_gross_leverage": 2.0,
+    "years": 1.4948665297741273
+  },
+  "pass": false,
+  "opened_at_utc": "2026-07-27T20:27:13.147634+00:00",
+  "config": {
+    "family": "compression_breakout",
+    "params": {
+      "breakout": 84,
+      "comp_q": 0.35,
+      "vol_z": 0.5,
+      "flow": 0.1,
+      "hold": 12,
+      "n": 2
+    },
+    "target_vol": 1.5,
+    "leverage_cap": 2.0,
+    "one_way_cost": 0.0008,
+    "adverse_funding": 0.0
+  }
+}
