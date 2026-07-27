@@ -27,7 +27,7 @@ jobs:
       - name: Restore verified research program
         shell: bash
         run: |
-          cat research/crowding_chunks/part_* > /tmp/crowding_research.py.gz.b64
+          cat research/crowding_chunks2/p* > /tmp/crowding_research.py.gz.b64
           echo 'ce4caa25f3a0b84c30ff0c80949b321931d61876725fd7ba42fd3f7220ad975b  /tmp/crowding_research.py.gz.b64' | sha256sum -c -
           base64 -d /tmp/crowding_research.py.gz.b64 | gzip -d > research/crowding_research.py
           echo '945584858a624c9e0218675e2c4244e13464026ac09708230277c302013cb896  research/crowding_research.py' | sha256sum -c -
