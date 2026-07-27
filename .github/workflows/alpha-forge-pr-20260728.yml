@@ -1,0 +1,45 @@
+name: Alpha Forge 2026-07-28
+
+on:
+  pull_request:
+    branches: [main]
+    types: [opened, synchronize, reopened]
+    paths:
+      - '.alpha-trigger-20260728'
+
+permissions:
+  contents: read
+
+env:
+  PYTHONUNBUFFERED: "1"
+
+jobs:
+  research:
+    runs-on: ubuntu-latest
+    timeout-minutes: 240
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Install dependencies
+        run: python -m pip install --upgrade pip pandas numpy pyarrow requests
+      - name: Restore sealed research program
+        shell: bash
+        run: |
+          base64 -d research/alpha_research.py.gz.b64 | gzip -d > research/alpha_research.py
+          python -m py_compile research/alpha_research.py
+      - name: Search on pre-holdout data and freeze candidate
+        run: python research/alpha_research.py search
+      - name: Open sealed holdout exactly once
+        run: python research/alpha_research.py holdout
+      - name: Upload research results
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: alpha-forge-20260728-results
+          path: |
+            research/results
+            research/alpha_research.py
+          retention-days: 7
+          if-no-files-found: warn
