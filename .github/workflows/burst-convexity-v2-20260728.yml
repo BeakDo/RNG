@@ -1,0 +1,48 @@
+name: Burst Convexity Alpha V2 2026-07-28
+
+on:
+  pull_request:
+    branches: [main]
+    types: [opened, synchronize, reopened]
+    paths:
+      - '.burst2-trigger-20260728'
+
+permissions:
+  contents: read
+
+env:
+  PYTHONUNBUFFERED: "1"
+
+jobs:
+  research:
+    runs-on: ubuntu-latest
+    timeout-minutes: 300
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Install dependencies
+        run: python -m pip install --upgrade pip pandas numpy pyarrow requests
+      - name: Restore verified optimized research program
+        shell: bash
+        run: |
+          cat research/burst_chunks_v2/part_* > /tmp/burst_convexity_v2.py.gz.b64
+          echo '5b7e41e52ce1b9344f10d8799d06679301861781a0b41d3228c4de0234e93f39  /tmp/burst_convexity_v2.py.gz.b64' | sha256sum -c -
+          base64 -d /tmp/burst_convexity_v2.py.gz.b64 | gzip -d > research/burst_convexity_research_v2.py
+          echo 'a249c82623c94134b008f04bbe08330b5a7d286de61e0bd72ab3c7927b7d7446  research/burst_convexity_research_v2.py' | sha256sum -c -
+          python -m py_compile research/burst_convexity_research_v2.py
+      - name: Search on sealed development and cross-symbol validation data
+        run: python research/burst_convexity_research_v2.py search
+      - name: Open latest-contract holdout exactly once
+        run: python research/burst_convexity_research_v2.py holdout
+      - name: Upload results
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: burst-convexity-v2-20260728-results
+          path: |
+            research/burst_convexity/results
+            research/burst_convexity_research_v2.py
+          retention-days: 7
+          if-no-files-found: warn
