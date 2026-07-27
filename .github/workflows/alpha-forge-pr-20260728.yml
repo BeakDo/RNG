@@ -27,7 +27,10 @@ jobs:
       - name: Restore sealed research program
         shell: bash
         run: |
-          base64 -d research/alpha_research.py.gz.b64 | gzip -d > research/alpha_research.py
+          cat research/alpha_chunks/part_* > /tmp/alpha_research.py.gz.b64
+          echo '95a10db2da5248ea6e2c03205ee2397b9587c540deacbdd8b1f042d5771c5b1f  /tmp/alpha_research.py.gz.b64' | sha256sum -c -
+          base64 -d /tmp/alpha_research.py.gz.b64 | gzip -d > research/alpha_research.py
+          echo '1dbac879fdea8038dcd484bb3be1712c8da5e15a8a307aa348d44767c6d67ee0  research/alpha_research.py' | sha256sum -c -
           python -m py_compile research/alpha_research.py
       - name: Search on pre-holdout data and freeze candidate
         run: python research/alpha_research.py search
