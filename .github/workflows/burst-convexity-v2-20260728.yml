@@ -7,6 +7,10 @@ on:
     paths:
       - '.burst2-trigger-20260728'
 
+concurrency:
+  group: burst-convexity-v3-${{ github.event.pull_request.number }}
+  cancel-in-progress: true
+
 permissions:
   contents: read
 
