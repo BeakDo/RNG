@@ -4,73 +4,36 @@
     "mdd": 0.3
   },
   "holdout": {
-    "cagr": -0.18891530481331065,
-    "mdd": 0.29575132297961604,
-    "sharpe": -1.1427265264255753,
-    "total_return": -0.2687496015736669,
-    "annual_turnover": 88.0457200669471,
-    "max_gross_leverage": 1.3333333333333335,
+    "cagr": 0.08595855359551652,
+    "mdd": 0.310098771161907,
+    "sharpe": 0.39023352494096397,
+    "total_return": 0.13119122978914088,
+    "annual_turnover": 79.49068069929629,
+    "max_gross_leverage": 2.0,
     "years": 1.4948665297741273
   },
   "cost_funding_stress": {
-    "cagr": -0.19192876637978806,
-    "mdd": 0.2950917087176961,
-    "sharpe": -1.104963621701397,
-    "total_return": -0.2728071928954753,
-    "annual_turnover": 90.02825762746764,
-    "max_gross_leverage": 1.3333333333333335,
+    "cagr": 0.08140495427573446,
+    "mdd": 0.31048540833495064,
+    "sharpe": 0.3793117939049825,
+    "total_return": 0.12410804021824773,
+    "annual_turnover": 77.96946788504697,
+    "max_gross_leverage": 2.0,
     "years": 1.4948665297741273
   },
   "pass": false,
-  "opened_at_utc": "2026-07-27T21:22:13.321297+00:00",
+  "opened_at_utc": "2026-07-27T22:03:55.547677+00:00",
   "config": {
-    "family": "ensemble",
+    "family": "compression_breakout",
     "params": {
-      "members": [
-        {
-          "family": "residual_momentum",
-          "params": {
-            "h": 42,
-            "n": 4,
-            "reb": 3,
-            "flow_w": 0.0
-          },
-          "target_vol": 0.6,
-          "leverage_cap": 4.0,
-          "one_way_cost": 0.0008,
-          "adverse_funding": 0.0
-        },
-        {
-          "family": "cross_momentum",
-          "params": {
-            "h": 18,
-            "n": 4,
-            "reb": 3,
-            "flow_w": 0.0,
-            "regime": true,
-            "skip": 6
-          },
-          "target_vol": 0.6,
-          "leverage_cap": 4.0,
-          "one_way_cost": 0.0008,
-          "adverse_funding": 0.0
-        },
-        {
-          "family": "funding_dislocation",
-          "params": {
-            "h": 18,
-            "n": 2,
-            "reb": 3,
-            "flow_w": 0.0
-          },
-          "target_vol": 0.6,
-          "leverage_cap": 4.0,
-          "one_way_cost": 0.0008,
-          "adverse_funding": 0.0
-        }
-      ]
+      "breakout": 84,
+      "comp_q": 0.35,
+      "vol_z": 0.5,
+      "flow": 0.1,
+      "hold": 12,
+      "n": 2
     },
-    "target_vol": 0.45,
+    "target_vol": 1.5,
     "leverage_cap": 2.0,
     "one_way_cost": 0.0008,
     "adverse_funding": 0.0
