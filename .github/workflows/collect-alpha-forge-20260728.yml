@@ -1,0 +1,43 @@
+name: Collect Alpha Forge 2026-07-28
+
+on:
+  workflow_run:
+    workflows: ["Alpha Forge 2026-07-28"]
+    types: [completed]
+
+permissions:
+  actions: read
+  contents: write
+
+jobs:
+  collect:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Download exact research artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: alpha-forge-20260728-results
+          path: alpha_forge_20260728
+          run-id: ${{ github.event.workflow_run.id }}
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+      - name: Record run metadata
+        shell: bash
+        run: |
+          mkdir -p alpha_forge_20260728
+          cat > alpha_forge_20260728/RUN_METADATA.json <<EOF
+          {
+            "research_run_id": "${{ github.event.workflow_run.id }}",
+            "research_head_sha": "${{ github.event.workflow_run.head_sha }}",
+            "research_conclusion": "${{ github.event.workflow_run.conclusion }}",
+            "collected_at": "$(date -u +%FT%TZ)"
+          }
+          EOF
+      - name: Commit collected results
+        shell: bash
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add alpha_forge_20260728
+          git commit -m "Add sealed alpha research results [skip ci]" || exit 0
+          git push
