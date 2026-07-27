@@ -24,26 +24,41 @@ jobs:
           python-version: "3.12"
       - name: Install dependencies
         run: python -m pip install --upgrade pip pandas numpy pyarrow requests
-      - name: Restore verified optimized research program
+      - name: Restore fully verified optimized research program
         shell: bash
         run: |
-          cat research/burst_chunks_v2/part_* > /tmp/burst_convexity_v2.py.gz.b64
-          sha256sum /tmp/burst_convexity_v2.py.gz.b64
-          base64 -d /tmp/burst_convexity_v2.py.gz.b64 | gzip -d > research/burst_convexity_research_v2.py
-          sha256sum research/burst_convexity_research_v2.py
-          echo 'a249c82623c94134b008f04bbe08330b5a7d286de61e0bd72ab3c7927b7d7446  research/burst_convexity_research_v2.py' | sha256sum -c -
-          python -m py_compile research/burst_convexity_research_v2.py
+          cd research/burst_chunks_v3
+          echo 'c4610a17ded9212161d2e10ee25023a38d86fbb80d7daacbc85383ddb2640de4  part_000' | sha256sum -c -
+          echo '97618e146fbcb85aef0c0ccf430388c7b059670ca6d2d58b8165094224b993b7  part_001' | sha256sum -c -
+          echo 'd4bf220395a61082b2f14472aa604a30a47cc4c04635a09e22834dfa397d2976  part_002' | sha256sum -c -
+          echo '7378efa62d6da1d60d12ddc8f21e2ca306f8affb74f0674026cb18b7f20982c7  part_003' | sha256sum -c -
+          echo 'c36abe9389d5ca127816ded89921c0de364061fa449be6094d4248bd078b9d55  part_004' | sha256sum -c -
+          echo '489a4af7f5edd381d0b1260e2ffbe3b8c68f47da9fe9423e788d5322080264f6  part_005' | sha256sum -c -
+          echo 'fd855b4720ed722953b59fc4114a8f479a2ec246e5b36a15f93f6d1d6345ef1f  part_006' | sha256sum -c -
+          echo '4e42d1b7b45c3f619dcc7c660637a45bfa6913fea582996d71ea0ff293c5c441  part_007' | sha256sum -c -
+          echo 'ad8c0b10a0f5ba6ce74e8135bd149688e112f7a8c198a7d55f35d51cb93debf0  part_008' | sha256sum -c -
+          echo '52e3f8df7a809fca187203532bda81d7cf6cec76b870fecaf478eed4d752d065  part_009' | sha256sum -c -
+          echo '4a74492d60f206d03456f4f766ca527575373aacfc3ad37f2541df184888fb9a  part_010' | sha256sum -c -
+          echo '69ecc4d64d7f323c33609cca85ae21d08947278124d42ed52bf7152540cf9a15  part_011' | sha256sum -c -
+          echo 'de096775d0949b9ef6663df5001f9418c355dbc7034c34f9c09a7cbbf0492369  part_012' | sha256sum -c -
+          echo '44111506438796572123c989fd46058de7db06c2d10e6d8e3d13f44a5ea495bc  part_013' | sha256sum -c -
+          cat part_* > /tmp/burst_convexity_v3.py.gz.b64
+          echo '5b7e41e52ce1b9344f10d8799d06679301861781a0b41d3228c4de0234e93f39  /tmp/burst_convexity_v3.py.gz.b64' | sha256sum -c -
+          cd ../..
+          base64 -d /tmp/burst_convexity_v3.py.gz.b64 | gzip -d > research/burst_convexity_research_v3.py
+          echo 'a249c82623c94134b008f04bbe08330b5a7d286de61e0bd72ab3c7927b7d7446  research/burst_convexity_research_v3.py' | sha256sum -c -
+          python -m py_compile research/burst_convexity_research_v3.py
       - name: Search on sealed development and cross-symbol validation data
-        run: python research/burst_convexity_research_v2.py search
+        run: python research/burst_convexity_research_v3.py search
       - name: Open latest-contract holdout exactly once
-        run: python research/burst_convexity_research_v2.py holdout
+        run: python research/burst_convexity_research_v3.py holdout
       - name: Upload results
         uses: actions/upload-artifact@v4
         if: always()
         with:
-          name: burst-convexity-v2-20260728-results
+          name: burst-convexity-v3-20260728-results
           path: |
             research/burst_convexity/results
-            research/burst_convexity_research_v2.py
+            research/burst_convexity_research_v3.py
           retention-days: 7
           if-no-files-found: warn
