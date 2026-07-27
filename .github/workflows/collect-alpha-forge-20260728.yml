@@ -15,6 +15,8 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - name: Download exact research artifact
+        id: download
+        continue-on-error: true
         uses: actions/download-artifact@v4
         with:
           name: alpha-forge-20260728-results
@@ -22,6 +24,7 @@ jobs:
           run-id: ${{ github.event.workflow_run.id }}
           github-token: ${{ secrets.GITHUB_TOKEN }}
       - name: Record run metadata
+        if: always()
         shell: bash
         run: |
           mkdir -p alpha_forge_20260728
@@ -30,10 +33,12 @@ jobs:
             "research_run_id": "${{ github.event.workflow_run.id }}",
             "research_head_sha": "${{ github.event.workflow_run.head_sha }}",
             "research_conclusion": "${{ github.event.workflow_run.conclusion }}",
+            "artifact_download_outcome": "${{ steps.download.outcome }}",
             "collected_at": "$(date -u +%FT%TZ)"
           }
           EOF
       - name: Commit collected results
+        if: always()
         shell: bash
         run: |
           git config user.name "github-actions[bot]"
