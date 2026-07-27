@@ -1,0 +1,48 @@
+name: Crowding Unwind Alpha 2026-07-28
+
+on:
+  pull_request:
+    branches: [main]
+    types: [opened, synchronize, reopened]
+    paths:
+      - '.crowding-trigger-20260728'
+
+permissions:
+  contents: read
+
+env:
+  PYTHONUNBUFFERED: "1"
+
+jobs:
+  research:
+    runs-on: ubuntu-latest
+    timeout-minutes: 240
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Install dependencies
+        run: python -m pip install --upgrade pip pandas numpy pyarrow requests
+      - name: Restore verified research program
+        shell: bash
+        run: |
+          cat research/crowding_chunks/part_* > /tmp/crowding_research.py.gz.b64
+          echo 'ce4caa25f3a0b84c30ff0c80949b321931d61876725fd7ba42fd3f7220ad975b  /tmp/crowding_research.py.gz.b64' | sha256sum -c -
+          base64 -d /tmp/crowding_research.py.gz.b64 | gzip -d > research/crowding_research.py
+          echo '945584858a624c9e0218675e2c4244e13464026ac09708230277c302013cb896  research/crowding_research.py' | sha256sum -c -
+          python -m py_compile research/crowding_research.py
+      - name: Search on development and unseen validation symbols
+        run: python research/crowding_research.py search
+      - name: Open new-symbol 2025-2026 holdout exactly once
+        run: python research/crowding_research.py holdout
+      - name: Upload results
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: crowding-unwind-20260728-results
+          path: |
+            research/crowding_results
+            research/crowding_research.py
+          retention-days: 7
+          if-no-files-found: warn
